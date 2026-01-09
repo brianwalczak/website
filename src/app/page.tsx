@@ -36,7 +36,7 @@ export default function Home() {
         </span>
 
         <nav className="flex gap-10 text-base font-medium text-zinc-400">
-          <a href="#" className="hover:text-zinc-100 transition">Home</a>
+          <a href="#" className="text-zinc-100 hover:text-zinc-100 transition">Home</a>
           <a href="#" className="hover:text-zinc-100 transition">Blog</a>
           <a href="#" className="hover:text-zinc-100 transition">Contact</a>
         </nav>
