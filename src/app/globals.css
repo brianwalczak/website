@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Overused Grotesk';
+  src: url('/fonts/OverusedGrotesk.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Overused Grotesk", system-ui, sans-serif;
+}
+
+.mono {
+  font-family: "JetBrains Mono", monospace;
+}
