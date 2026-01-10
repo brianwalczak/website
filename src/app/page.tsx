@@ -30,7 +30,7 @@ export default function Home() {
       <header className="flex items-center justify-between">
         <span className="mono text-sm text-zinc-200">
           Brian's Cabin
-          <span className="opacity-20">|</span>
+          <span className="opacity-20"> | </span>
           <a className="hover:text-zinc-400 active:text-zinc-600 transition" href="mailto:brian@brianwalczak.com"
             target="_blank">brian@brianwalczak.com</a>
         </span>
@@ -67,21 +67,21 @@ export default function Home() {
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr mt-12">
-        <div className="border border-white/10 bg-zinc-900 rounded-xl p-5 pb-8">
+        <div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
           <h2 className="mono text-purple-400 text-sm mb-2">Projects</h2>
 
           <p className="text-zinc-400 text-base font-medium">
-            I've built many websites and wrote software to help others. I make small apps, experiments, and
-            ideas I actually finish.
+            I've built many websites and wrote cool software that helps others. I like writing code, designing hardware, and
+            building random ideas all the time.
           </p>
         </div>
 
-        <div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
+        <div className="border border-white/10 bg-zinc-900 rounded-xl p-5 pb-8">
           <h2 className="mono text-purple-400 text-sm mb-2">Learning</h2>
 
           <p className="text-zinc-400 text-base font-medium">
-            I love learning new things, whether it's a programming language, framework, or just tinkering with
-            new tech!
+            I love learning new things, whether it's a programming language, using software, or just tinkering with
+            tech! If I'm free, I'm probably learning something new.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export default function Home() {
 
           <p className="text-zinc-400 text-base font-medium">
             I run a ton of services on my own server using Docker, including cloud storage for my family and
-            more. Self-host everything!
+            more. I love self-hosting! :D
           </p>
         </div>
       </section>
