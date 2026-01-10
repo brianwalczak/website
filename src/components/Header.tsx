@@ -1,4 +1,11 @@
+"use client";
+
+import { usePathname } from 'next/navigation';
+
 export default function Header() {
+    const pathname = usePathname();
+    const isActive = (href: string) => pathname === href;
+
     return (
         <header className="flex items-center justify-between">
             <span className="mono text-sm text-zinc-200">
@@ -9,9 +16,9 @@ export default function Header() {
             </span>
 
             <nav className="flex gap-10 text-base font-medium text-zinc-400">
-                <a href="#" className="text-zinc-100 hover:text-zinc-100 transition">Home</a>
-                <a href="#" className="hover:text-zinc-100 transition">Blog</a>
-                <a href="#" className="hover:text-zinc-100 transition">Contact</a>
+                <a href="/" className={isActive('/') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Home</a>
+                <a href="/blog" className={isActive('/blog') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Blog</a>
+                <a href="/contact" className={isActive('/contact') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Contact</a>
             </nav>
         </header>
     );
