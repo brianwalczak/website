@@ -1,5 +1,10 @@
 "use server";
 
+let cache: { online: boolean; working: boolean } | null = null;
+let expiresAt: number | null = null;
+
+const CODE_THRESHOLD = 10; // if there's no activity after CODE_THRESHOLD minutes, assume im not coding anymore (Hackatime heartbeat)
+
 async function slackStatus() {
     const req = await fetch("https://slack.com/api/users.getPresence?user=" + process.env.SLACK_USER_ID, {
         headers: {
@@ -26,8 +31,8 @@ async function hackStatus() {
         const diff = Date.now() - (res.heartbeat?.time * 1000);
         const minutes = diff / 1000 / 60;
 
-        if (minutes <= 10) {
-            return true;
+        if (minutes <= CODE_THRESHOLD) {
+            return minutes;
         }
     }
 
@@ -35,15 +40,29 @@ async function hackStatus() {
 }
 
 export default async function GetActivity() {
-    try {
-        const isHackatime = await hackStatus();
-        if (isHackatime) return { online: true, working: true }; // im coding!
-
-        const isSlack = await slackStatus();
-        if (isSlack) return { online: true, working: false }; // im chatting!
-    } catch (error) {
-        return { online: false, working: false }; // something went wrong
+    if (cache && expiresAt && Date.now() < expiresAt) {
+        return cache; // serve from cache (we don't want to spam APIs)
     }
 
-    return { online: false, working: false }; // fallback to offline
+    try {
+        const isHackatime = await hackStatus();
+        if (isHackatime) {
+            cache = { online: true, working: true };
+            expiresAt = Date.now() + (CODE_THRESHOLD - isHackatime) * 60 * 1000; // cache till threshold
+
+            return cache; // im coding!
+        }
+
+        const isSlack = await slackStatus();
+        if (isSlack) {
+            cache = { online: true, working: false };
+            expiresAt = Date.now() + 2 * 60 * 1000; // cache for 2 minutes
+
+            return cache; // im chatting!
+        }
+    } catch (error) {
+        return { online: false, working: false }; // something went wrong (API down? idk don't cache though)
+    }
+
+    return { online: false, working: false }; // fallback to offline (don't cache)
 }
