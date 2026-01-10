@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import GetActivity from "@/components/server/GetActivity";
+import GetActivity from "@/components/GetActivity";
 
 export default function ActivityStatus() {
     const [activity, setActivity] = useState<{
