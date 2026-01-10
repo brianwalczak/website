@@ -1,3 +1,5 @@
+"use server";
+
 let cache: { online: boolean; working: boolean } | null = null;
 let expiresAt: number | null = null;
 
