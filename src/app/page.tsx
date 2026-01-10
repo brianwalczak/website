@@ -30,7 +30,7 @@ export default function Home() {
     <div className="relative mx-auto max-w-5xl px-6 py-16">
       <header className="flex items-center justify-between">
         <span className="mono text-sm text-zinc-200">
-          Brian's Cabin
+          Brian&apos;s Cabin
           <span className="opacity-20 hidden sm:inline"> | </span>
           <a className="hover:text-zinc-400 active:text-zinc-600 transition hidden sm:inline" href="mailto:brian@brianwalczak.com"
             target="_blank">brian@brianwalczak.com</a>
@@ -45,11 +45,11 @@ export default function Home() {
 
       <section className="max-w-2xl space-y-4 mt-20">
         <h1 className="text-5xl font-semibold">
-          Hey - I'm Brian.
+          Hey - I&apos;m Brian.
         </h1>
 
         <p className="text-lg font-medium text-zinc-400">
-          I'm a high school student and full-stack developer with a strong focus on back-end development. I'm
+          I&apos;m a high school student and full-stack developer with a strong focus on back-end development. I&apos;m
           proficient in Node.js and have a solid understanding of Python. I love tinkering with electronics,
           especially Arduino.
         </p>
@@ -74,7 +74,7 @@ export default function Home() {
           <h2 className="mono text-purple-400 text-sm mb-2">Projects</h2>
 
           <p className="text-zinc-400 text-base font-medium">
-            I've built many websites and wrote cool software that helps others. I like writing code, designing hardware, and
+            I&apos;ve built many websites and wrote cool software that helps others. I like writing code, designing hardware, and
             building random ideas all the time.
           </p>
         </div>
@@ -83,8 +83,8 @@ export default function Home() {
           <h2 className="mono text-purple-400 text-sm mb-2">Learning</h2>
 
           <p className="text-zinc-400 text-base font-medium">
-            I love learning new things, whether it's a programming language, using software, or just tinkering with
-            tech! If I'm free, I'm probably learning something new.
+            I love learning new things, whether it&apos;s a programming language, using software, or just tinkering with
+            tech! If I&apos;m free, I&apos;m probably learning something new.
           </p>
         </div>
 

@@ -60,7 +60,7 @@ export default async function GetActivity() {
 
             return cache; // im chatting!
         }
-    } catch (error) {
+    } catch {
         return { online: false, working: false }; // something went wrong (API down? idk don't cache though)
     }
 

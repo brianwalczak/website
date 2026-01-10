@@ -26,15 +26,15 @@ export default function ActivityStatus() {
             </div>
 
             {activity.online && activity.working && (
-                <p className="text-zinc-300 text-sm mt-3">I'm currently working on a project in Visual Studio Code!</p>
+                <p className="text-zinc-300 text-sm mt-3">I&apos;m currently working on a project in Visual Studio Code!</p>
             )}
 
             {activity.online && !activity.working && (
-                <p className="text-zinc-300 text-sm mt-3">I'm currently chatting over on the <a href='https://hackclub.com/slack/' className='underline text-[#ec3750]' target='_blank' rel='noopener noreferrer'>Hack Club</a> Slack!</p>
+                <p className="text-zinc-300 text-sm mt-3">I&apos;m currently chatting over on the <a href='https://hackclub.com/slack/' className='underline text-[#ec3750]' target='_blank' rel='noopener noreferrer'>Hack Club</a> Slack!</p>
             )}
 
             {!activity.online && (
-                <p className="text-zinc-300 text-sm mt-3">I'm currently away from my computer, probably sleeping or just chilling.</p>
+                <p className="text-zinc-300 text-sm mt-3">I&apos;m currently away from my computer, probably sleeping or just chilling.</p>
             )}
         </>
     );
