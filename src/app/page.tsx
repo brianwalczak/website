@@ -31,8 +31,8 @@ export default function Home() {
       <header className="flex items-center justify-between">
         <span className="mono text-sm text-zinc-200">
           Brian's Cabin
-          <span className="opacity-20"> | </span>
-          <a className="hover:text-zinc-400 active:text-zinc-600 transition" href="mailto:brian@brianwalczak.com"
+          <span className="opacity-20 hidden sm:inline"> | </span>
+          <a className="hover:text-zinc-400 active:text-zinc-600 transition hidden sm:inline" href="mailto:brian@brianwalczak.com"
             target="_blank">brian@brianwalczak.com</a>
         </span>
 
@@ -97,6 +97,10 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <footer className="mono text-zinc-500 text-xs mt-24">
+        © 2026 Brian Walczak
+      </footer>
     </div>
   );
 }
