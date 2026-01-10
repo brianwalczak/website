@@ -1,5 +1,6 @@
 "use client";
 
+import ActivityStatus from "@/components/client/ActivityStatus";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -63,6 +64,8 @@ export default function Home() {
 
         <div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
           <h2 className="mono text-green-400 text-sm mb-3">Status</h2>
+
+          <ActivityStatus />
         </div>
       </section>
 
