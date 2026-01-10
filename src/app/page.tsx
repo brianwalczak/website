@@ -1,6 +1,6 @@
 "use client";
 
-import ActivityStatus from "@/components/client/ActivityStatus";
+import ActivityStatus from "@/components/ActivityStatus";
 import { useEffect, useState } from "react";
 
 export default function Home() {
