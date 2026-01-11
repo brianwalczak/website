@@ -84,7 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-12">
+      <section className="mt-12 border-t-2 border-white/20 pt-10">
         <h2 className="text-zinc-100 text-2xl font-bold mb-6">Skills</h2>
 
         <div className="flex justify-center sm:justify-start border-b border-white/10 gap-2 mb-6"> {/* centered on mobile devices! */}
@@ -181,7 +181,7 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col items-center gap-3 p-4 border border-white/10 bg-zinc-900 rounded-xl hover:border-white/20 transition">
-                <svg className="size-9 my-0.5 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 72"><path d="M0.522473 45.0933C-0.184191 46.246 -0.173254 47.7004 0.550665 48.8423L13.6534 69.5114C14.5038 70.8529 16.1429 71.4646 17.6642 71.0082L55.4756 59.6648C57.539 59.0457 58.5772 56.7439 57.6753 54.7874L33.3684 2.06007C32.183 -0.511323 28.6095 -0.722394 27.1296 1.69157L0.522473 45.0933ZM32.7225 14.1141C32.2059 12.9187 30.4565 13.1028 30.2001 14.3796L20.842 60.9749C20.6447 61.9574 21.5646 62.7964 22.5248 62.5098L48.6494 54.7114C49.4119 54.4838 49.8047 53.6415 49.4891 52.9111L32.7225 14.1141Z"/></svg>
+                <svg className="size-9 my-0.5 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 72"><path fillRule="evenodd" clipRule="evenodd" d="M0.522473 45.0933C-0.184191 46.246 -0.173254 47.7004 0.550665 48.8423L13.6534 69.5114C14.5038 70.8529 16.1429 71.4646 17.6642 71.0082L55.4756 59.6648C57.539 59.0457 58.5772 56.7439 57.6753 54.7874L33.3684 2.06007C32.183 -0.511323 28.6095 -0.722394 27.1296 1.69157L0.522473 45.0933ZM32.7225 14.1141C32.2059 12.9187 30.4565 13.1028 30.2001 14.3796L20.842 60.9749C20.6447 61.9574 21.5646 62.7964 22.5248 62.5098L48.6494 54.7114C49.4119 54.4838 49.8047 53.6415 49.4891 52.9111L32.7225 14.1141Z"/></svg>
 
                 <span className="text-sm text-zinc-300 text-center">Prisma</span>
               </div>
@@ -246,6 +246,12 @@ export default function Home() {
             </>
           )}
         </div>
+      </section>
+
+      <section className="mt-32 mb-16 text-center">
+        <h2 className="text-4xl font-extrabold text-white mb-6">Proud member of Hack Club. ❤️</h2>
+        <p className="mono text-zinc-400 text-sm font-bold mb-8">I'm fortunate enough to be a member of Hack Club, a nonprofit organization with an amazing community of teen hackers and creators. Some of my projects were funded by Hack Club, and they wouldn't be made possible without them!</p>
+        <p className="mono text-zinc-400 text-sm font-bold">If you're a teen who's interested in coding, hardware, robotics, or just hacking, consider <a href="https://hackclub.com/slack" target="_blank" rel="noopener noreferrer" className="underline">joining us here</a>!</p>
       </section>
     </>
   );
