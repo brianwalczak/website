@@ -4,6 +4,7 @@
 
 ### Built with...
 - React / Next.js v16
+- Turso Database
 - Tailwind CSS
 - Payload CMS
 
