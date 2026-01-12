@@ -23,8 +23,10 @@ export const Posts: CollectionConfig = {
       required: true,
     },
     {
-      name: "publishedAt",
+      name: "createdAt",
       type: "date",
+      required: true,
+      defaultValue: () => new Date().toISOString(),
     },
   ],
 }
