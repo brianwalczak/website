@@ -5,24 +5,44 @@ export const Posts: CollectionConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    useAsTitle: 'title',
+  },
   fields: [
     {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
+      type: 'row',
+      fields: [
+        {
+          label: 'Post Title',
+          name: 'title',
+          type: 'text',
+          required: true,
+          admin: {
+            width: '75%',
+            placeholder: 'Enter your post title...',
+          },
+        },
+        {
+          label: 'URL Slug',
+          name: 'slug',
+          type: 'text',
+          required: true,
+          unique: true,
+          admin: {
+            width: '25%',
+            placeholder: 'url-slug',
+          },
+        },
+      ],
     },
     {
-      name: 'title',
-      type: 'text',
-      required: true,
-    },
-    {
+      label: 'Content',
       name: 'body',
       type: 'richText',
       required: true,
     },
     {
+      label: 'Published Date',
       name: "createdAt",
       type: "date",
       required: true,
