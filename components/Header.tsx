@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Header() {
     const pathname = usePathname();
@@ -16,9 +17,9 @@ export default function Header() {
             </span>
 
             <nav className="flex gap-10 text-base font-medium text-zinc-400">
-                <a href="/" className={isActive('/') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Home</a>
-                <a href="/blog" className={isActive('/blog') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Blog</a>
-                <a href="/contact" className={isActive('/contact') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Contact</a>
+                <Link href="/" className={isActive('/') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Home</Link>
+                <Link href="/blog" className={isActive('/blog') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Blog</Link>
+                <Link href="/contact" className={isActive('/contact') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Contact</Link>
             </nav>
         </header>
     );

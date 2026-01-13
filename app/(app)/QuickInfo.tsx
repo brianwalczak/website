@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function QuickInfo() {
     const [time, setTime] = useState("--:-- --");
@@ -46,7 +47,7 @@ export default function QuickInfo() {
                 <h2 className="mono text-green-400 text-sm mb-3">Status</h2>
 
                 {!activity ? (
-                    <span className="text-white inline-flex items-center gap-1">Loading, you'll find out what I'm up too soon! <img src="/yayayayayay.gif" alt="yayyy!" className="size-4.5" /></span>
+                    <span className="text-white inline-flex items-center gap-1">Loading, you&apos;ll find out what I&apos;m up too soon! <Image src="/yayayayayay.gif" alt="yayyy!" width={18} height={18} className="size-4.5" unoptimized /></span>
                 ) : (
                     <>
                         <div className="flex items-center gap-2">
