@@ -1,5 +1,6 @@
 "use client";
 
+import { HEADER_LINKS } from '@/lib/constants';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
@@ -17,9 +18,11 @@ export default function Header() {
             </span>
 
             <nav className="flex gap-10 text-base font-medium text-zinc-400">
-                <Link href="/" className={isActive('/') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Home</Link>
-                <Link href="/blog" className={isActive('/blog') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Blog</Link>
-                <Link href="/contact" className={isActive('/contact') ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>Contact</Link>
+                {HEADER_LINKS.map((page) => (
+                    <Link key={page.url} href={page.url} className={isActive(page.url) ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>
+                        {page.label}
+                    </Link>
+                ))}
             </nav>
         </header>
     );

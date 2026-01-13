@@ -1,4 +1,6 @@
 "use client";
+
+import { LOCAL_TIMEZONE } from "@/lib/constants";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -17,7 +19,7 @@ export default function QuickInfo() {
                 hour: "numeric",
                 minute: "2-digit",
                 hour12: true,
-                timeZone: "America/Chicago",
+                timeZone: LOCAL_TIMEZONE.value,
             });
 
             setTime(timeString);
@@ -40,7 +42,7 @@ export default function QuickInfo() {
             <div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
                 <h2 className="mono text-blue-400 text-sm mb-2">Local Time</h2>
                 <p className="mono text-zinc-100 text-2xl font-extrabold">{time}</p>
-                <p className="text-zinc-500 text-xs mt-3">Central Time (McKinney, TX, USA)</p>
+                <p className="text-zinc-500 text-xs mt-3">{LOCAL_TIMEZONE.label}</p>
             </div>
 
             <div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
