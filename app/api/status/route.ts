@@ -1,4 +1,4 @@
-"use server";
+import { NextResponse } from 'next/server';
 
 let cache: { online: boolean; working: boolean } | null = null;
 let expiresAt: number | null = null;
@@ -39,9 +39,9 @@ async function hackStatus() {
     return false;
 }
 
-export default async function GetActivity() {
+export async function GET() {
     if (cache && expiresAt && Date.now() < expiresAt) {
-        return cache; // serve from cache (we don't want to spam APIs)
+        return NextResponse.json(cache); // serve from cache (we don't want to spam APIs)
     }
 
     try {
@@ -50,7 +50,7 @@ export default async function GetActivity() {
             cache = { online: true, working: true };
             expiresAt = Date.now() + (CODE_THRESHOLD - isHackatime) * 60 * 1000; // cache till threshold
 
-            return cache; // im coding!
+            return NextResponse.json(cache); // im coding!
         }
 
         const isSlack = await slackStatus();
@@ -58,11 +58,11 @@ export default async function GetActivity() {
             cache = { online: true, working: false };
             expiresAt = Date.now() + 2 * 60 * 1000; // cache for 2 minutes
 
-            return cache; // im chatting!
+            return NextResponse.json(cache); // im chatting!
         }
     } catch {
-        return { online: false, working: false }; // something went wrong (API down? idk don't cache though)
+        return NextResponse.json({ online: false, working: false }); // something went wrong (API down? idk don't cache though)
     }
 
-    return { online: false, working: false }; // fallback to offline (don't cache)
+    return NextResponse.json({ online: false, working: false }); // fallback to offline (don't cache)
 }
