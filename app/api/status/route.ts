@@ -56,7 +56,7 @@ export async function GET() {
         const isSlack = await slackStatus();
         if (isSlack) {
             cache = { online: true, working: false };
-            expiresAt = Date.now() + 2 * 60 * 1000; // cache for 2 minutes
+            expiresAt = Date.now() + 1 * 60 * 1000; // cache for 1 minute
 
             return NextResponse.json(cache); // im chatting!
         }
@@ -64,5 +64,7 @@ export async function GET() {
         return NextResponse.json({ online: false, working: false }); // something went wrong (API down? idk don't cache though)
     }
 
-    return NextResponse.json({ online: false, working: false }); // fallback to offline (don't cache)
+    cache = { online: false, working: false };
+    expiresAt = Date.now() + 1 * 60 * 1000; // cache for 1 minute
+    return NextResponse.json(cache); // fallback to offline
 }
