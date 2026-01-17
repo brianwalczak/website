@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
+import { POSTS_PER_PAGE } from '@/lib/constants';
+import { redirect } from 'next/navigation';
 
 function extractText(body: any): string {
     try {
@@ -32,19 +34,28 @@ function calcReadTime(text: string): string {
     return `${Math.max(1, Math.ceil(words / 238))} min read`;
 }
 
-export default async function Blog() {
+export default async function Blog({ searchParams }: { searchParams?: { p?: string }}) {
     const payload = await getPayload({ config });
+    const params = searchParams ? await searchParams : {};
 
-    // will fix later, this is temporary to show some posts
-    const page = 1;
-    const totalPages = 67;
+    let page = 1;
+    if (params && params.p !== undefined) {
+        const parsed = parseInt(params.p);
+
+        if (!isNaN(parsed) && parsed > 0) page = parsed;
+    }
 
     const posts = await payload.find({
         collection: 'posts',
-        limit: 12,
+        limit: POSTS_PER_PAGE,
         page: page,
         sort: '-createdAt'
     });
+
+    const totalPages = Math.max(1, Math.ceil((posts?.totalDocs || 0) / POSTS_PER_PAGE));
+    if (page > totalPages) {
+        redirect(`/blog?p=${totalPages}`);
+    }
 
     return (
         <main className="max-w-5xl space-y-6 mt-20">
@@ -63,6 +74,10 @@ export default async function Blog() {
                         </article>
                     </Link>
                 ))}
+
+                {posts?.docs?.length === 0 && (
+                    <p className="text-zinc-400 font-semibold text-lg">No posts found :( Check back later!</p>
+                )}
             </section>
         </main>
     )
