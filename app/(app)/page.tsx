@@ -1,5 +1,6 @@
 import QuickInfo from "./QuickInfo";
 import Skills from "./Skills";
+import Music from "./Music";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
 
       <QuickInfo />
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr mt-12">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr mt-6">
         <div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
           <h2 className="mono text-purple-400 text-sm mb-2">Projects</h2>
 
@@ -47,6 +48,7 @@ export default function Home() {
         </div>
       </section>
 
+      <Music />
       <Skills />
 
       <section className="mt-32 mb-16 text-center">
