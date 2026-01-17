@@ -92,12 +92,15 @@ export async function GET() {
         const track = await getCurrentTrack();
 
         if (track) {
+            const albumArt = track.item?.album?.images;
+            const lowQualityArt = albumArt && albumArt.length > 0 ? albumArt[albumArt.length - 1].url : null;
+
             cache = {
                 name: track.item.name,
                 artist: track.item?.artists?.map((artist: any) => artist.name).join(", "),
                 playing: track.is_playing,
                 url: (track.item?.external_urls?.spotify || track.item?.href || "https://open.spotify.com"),
-                albumArtUrl: (track.item?.album?.images?.[0]?.url || null),
+                albumArtUrl: lowQualityArt,
                 position: (track?.progress_ms || 0),
                 duration: (track.item?.duration_ms || 0)
             };
