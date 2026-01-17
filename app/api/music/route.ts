@@ -102,7 +102,7 @@ export async function GET() {
 
             cache = {
                 name: track.item.name,
-                artist: track.item?.artists?.map((artist: any) => artist.name).join(", "),
+                artist: track.item?.artists?.map((artist: { name: string; }) => artist.name).join(", "),
                 playing: track.is_playing,
                 url: (track.item?.external_urls?.spotify || track.item?.href || "https://open.spotify.com"),
                 albumArtUrl: lowQualityArt,
