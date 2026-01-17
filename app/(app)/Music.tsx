@@ -8,18 +8,52 @@ export default function Music() {
     const [spotify, setSpotify] = useState<MusicData | null>(null);
 
     const [isVisible, setIsVisible] = useState(false);
+    const [currentPos, setCurrentPos] = useState<number | null>(null);
 
     useEffect(() => {
         fetch('/api/music').then(res => res.json())
             .then(data => {
                 setSpotify(data); // set listening state with fetched data
+                setCurrentPos(data.position);
                 if (data && data.name) setIsVisible(true);
             })
             .catch(() => {
                 setSpotify(null); // shouldn't happen, but assume not listening
                 setIsVisible(false);
+                setCurrentPos(null);
             });
     }, []);
+
+    useEffect(() => {
+        if (!spotify?.playing) return;
+
+        const interval = setInterval(() => {
+            setCurrentPos(prev => {
+                if (prev === null || spotify.duration === null) return prev;
+                const newPos = prev + 1000;
+                
+                if (newPos >= spotify.duration) {
+                    fetch('/api/music').then(res => res.json())
+                        .then(data => {
+                            setSpotify(data);
+                            setCurrentPos(data.position);
+                            if (!data || !data.name) setIsVisible(false);
+                        })
+                        .catch(() => {
+                            setSpotify(null);
+                            setIsVisible(false);
+                            setCurrentPos(null);
+                        });
+                        
+                    return prev;
+                } else {
+                    return newPos;
+                }
+            });
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [spotify?.playing, spotify?.duration]);
 
     return (
         <section className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[min(90vw,50rem)] border border-white/10 bg-zinc-900 rounded-full p-2 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`}>
@@ -38,14 +72,14 @@ export default function Music() {
 
                         <p className="text-zinc-400 text-xs truncate">{spotify.artist}</p>
 
-                        {spotify.position !== null && spotify.duration !== null && (
+                        {currentPos !== null && spotify.duration !== null && (
                             <div className="flex items-center gap-2 mt-1">
                                 <span className="text-zinc-500 text-xs mono">
-                                    {Math.floor(spotify.position / 60000)}:{String(Math.floor((spotify.position % 60000) / 1000)).padStart(2, '0')}
+                                    {Math.floor(currentPos / 60000)}:{String(Math.floor((currentPos % 60000) / 1000)).padStart(2, '0')}
                                 </span>
 
                                 <div className="flex-1 bg-zinc-700 rounded-full h-1">
-                                    <div className="bg-green-400 h-1 rounded-full" style={{ width: `${(spotify.position / spotify.duration) * 100}%` }}></div>
+                                    <div className="bg-green-400 h-1 rounded-full transition-all duration-500" style={{ width: `${(currentPos / spotify.duration) * 100}%` }}></div>
                                 </div>
                                 
                                 <span className="text-zinc-500 text-xs mono">
