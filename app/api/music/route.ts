@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-let cache: { name: string | null, artist: string | null, playing: boolean | null, position: number | null, duration: number | null } | null = null;
+let cache: { name: string | null, artist: string | null, playing: boolean | null, url: string | null, albumArtUrl: string | null, position: number | null, duration: number | null } | null = null;
 let expiresAt: number | null = null;
 
 let accessToken: string | null = null;
@@ -92,14 +92,22 @@ export async function GET() {
         const track = await getCurrentTrack();
 
         if (track) {
-            cache = { name: track.item.name, artist: track.item?.artists?.map((artist: any) => artist.name).join(", "), playing: track.is_playing, position: (track?.progress_ms || 0), duration: (track.item?.duration_ms || 0) };
+            cache = {
+                name: track.item.name,
+                artist: track.item?.artists?.map((artist: any) => artist.name).join(", "),
+                playing: track.is_playing,
+                url: (track.item?.external_urls?.spotify || track.item?.href || "https://open.spotify.com"),
+                albumArtUrl: (track.item?.album?.images?.[0]?.url || null),
+                position: (track?.progress_ms || 0),
+                duration: (track.item?.duration_ms || 0)
+            };
         } else {
-            cache = { name: null, artist: null, playing: null, position: null, duration: null };
+            cache = { name: null, artist: null, playing: null, url: null, albumArtUrl: null, position: null, duration: null };
         }
 
         expiresAt = Date.now() + 30 * 1000; // cache for 30 seconds
         return NextResponse.json(cache);
     } catch {
-        return NextResponse.json({ name: null, artist: null, playing: null, position: null, duration: null }); // something went wrong (API down? idk don't cache though)
+        return NextResponse.json({ name: null, artist: null, playing: null, url: null, albumArtUrl: null, position: null, duration: null }); // something went wrong (API down? idk don't cache though)
     }
 }
