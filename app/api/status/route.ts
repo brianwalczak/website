@@ -41,6 +41,10 @@ async function hackStatus() {
 }
 
 export async function GET() {
+    if (process.env.STATUS_ENABLED === 'false') {
+        return NextResponse.json({ online: false, working: false });
+    }
+
     if (cache && expiresAt && Date.now() < expiresAt) {
         return NextResponse.json(cache); // serve from cache (we don't want to spam APIs)
     }

@@ -85,6 +85,10 @@ async function getCurrentTrack(retry = false) {
 }
 
 export async function GET() {
+    if (process.env.SPOTIFY_ENABLED === 'false') {
+        return NextResponse.json({ name: null, artist: null, playing: null, url: null, albumArtUrl: null, position: null, duration: null });
+    }
+
     if (cache && expiresAt && Date.now() < expiresAt) {
         return NextResponse.json(cache); // serve from cache (we don't want to spam APIs)
     }
