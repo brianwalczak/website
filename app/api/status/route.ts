@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
+import { StatusData } from '@/lib/types';
 
-let cache: { online: boolean; working: boolean } | null = null;
+let cache: StatusData | null = null;
 let expiresAt: number | null = null;
 
 const CODE_THRESHOLD = 10; // if there's no activity after CODE_THRESHOLD minutes, assume im not coding anymore (Hackatime heartbeat)

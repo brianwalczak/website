@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
+import { MusicData } from '@/lib/types';
 
-let cache: { name: string | null, artist: string | null, playing: boolean | null, url: string | null, albumArtUrl: string | null, position: number | null, duration: number | null } | null = null;
+let cache: MusicData | null = null;
 let expiresAt: number | null = null;
 
 let accessToken: string | null = null;
@@ -108,7 +109,7 @@ export async function GET() {
             cache = { name: null, artist: null, playing: null, url: null, albumArtUrl: null, position: null, duration: null };
         }
 
-        expiresAt = Date.now() + 30 * 1000; // cache for 30 seconds
+        expiresAt = Date.now() + 10 * 1000; // cache for 10 seconds
         return NextResponse.json(cache);
     } catch {
         return NextResponse.json({ name: null, artist: null, playing: null, url: null, albumArtUrl: null, position: null, duration: null }); // something went wrong (API down? idk don't cache though)
