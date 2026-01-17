@@ -29,7 +29,7 @@ export default function Music() {
     }, []);
 
     return (
-        <section className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 w-200 border border-white/10 bg-zinc-900 rounded-full p-2 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`}>
+        <section className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[min(90vw,50rem)] border border-white/10 bg-zinc-900 rounded-full p-2 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`}>
             {spotify && spotify.name && (
                 <div className="flex items-center gap-3">
                     {spotify.albumArtUrl && (
