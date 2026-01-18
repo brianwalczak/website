@@ -1,3 +1,4 @@
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
@@ -33,5 +34,11 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: [],
+  plugins: process.env.BLOB_READ_WRITE_TOKEN !== undefined ? [ // only enable if connected to Vercel project
+    vercelBlobStorage({
+      enabled: true,
+      collections: { media: true },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
+  ] : [],
 });
