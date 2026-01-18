@@ -1,4 +1,16 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+.prose { @apply prose-xl prose-invert; }
+.prose h1 { @apply text-4xl font-bold mt-8 mb-4; }
+.prose h2 { @apply text-3xl font-bold mt-7 mb-3; }
+.prose h3 { @apply text-2xl font-bold mt-6 mb-3; }
+.prose h4 { @apply text-xl font-bold mt-5 mb-2; }
+.prose h5 { @apply text-lg font-bold mt-4 mb-2; }
+.prose h6 { @apply text-base font-bold mt-4 mb-2; }
+.prose p { @apply mb-4 text-xl tracking-[0.015em]; }
+
+.prose h1.title { @apply text-5xl; }
 
 @font-face {
   font-family: 'Overused Grotesk';
