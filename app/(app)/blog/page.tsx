@@ -70,7 +70,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
                         <article className="border border-white/10 bg-zinc-900 rounded-xl p-5 hover:bg-zinc-800 transition-colors">
                             <h2 className="text-2xl font-bold mb-2 line-clamp-2">{post.title}</h2>
                             <div className="text-zinc-400 text-sm mb-2">{formatDate(post.createdAt)} <span className="font-bold mx-1">•</span> {calcReadTime(extractText(post.body))}</div>
-                            <p className="text-zinc-400 font-medium mb-4 line-clamp-3">{extractText(post.body)}</p>
+                            <p className="text-zinc-400 font-medium line-clamp-3">{extractText(post.body)}</p>
                         </article>
                     </Link>
                 ))}
@@ -79,6 +79,34 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
                     <p className="text-zinc-400 font-semibold text-lg">No posts found :( Check back later!</p>
                 )}
             </section>
+
+            <nav className="flex items-center justify-between">
+                <div>
+                    <Link href={`/blog?p=${Math.max(1, page - 1)}`} className={`${page > 1 ? 'text-zinc-100 hover:text-zinc-300 transition-colors' : 'text-zinc-600 pointer-events-none'}`} aria-disabled={page <= 1}>
+                        <span className="flex items-center justify-center font-semibold">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-3.5 mr-1">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                            </svg>
+
+                            <span>Previous</span>
+                        </span>
+                    </Link>
+                </div>
+
+                <div className="text-sm font-semibold text-zinc-400">Page {page} of {totalPages}</div>
+
+                <div>
+                    <Link href={`/blog?p=${Math.min(totalPages, page + 1)}`} className={`${page < totalPages ? 'text-zinc-100 hover:text-zinc-300 transition-colors' : 'text-zinc-600 pointer-events-none'}`} aria-disabled={page >= totalPages}>
+                        <span className="flex items-center justify-center font-semibold">
+                            <span>Next</span>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-3.5 ml-1">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </span>
+                    </Link>
+                </div>
+            </nav>
         </main>
     )
 }
