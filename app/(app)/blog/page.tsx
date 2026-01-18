@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
+import { formatDate, calcReadTime } from '@/lib/utils';
 import { POSTS_PER_PAGE } from '@/lib/constants';
 import { redirect } from 'next/navigation';
 
@@ -14,24 +15,6 @@ function extractText(body: any): string {
     } catch {
         return '';
     }
-}
-
-function formatDate(str: string): string {
-    const date = new Date(str);
-
-    // this should give us a format like Jan 17, 2026
-    return date.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
-    });
-}
-
-function calcReadTime(text: string): string {
-    if (!text) return '1 min read';
-
-    const words = (text.match(/\b\w+\b/g) || []).length; // word count
-    return `${Math.max(1, Math.ceil(words / 238))} min read`;
 }
 
 export default async function Blog({ searchParams }: { searchParams?: { p?: string }}) {
