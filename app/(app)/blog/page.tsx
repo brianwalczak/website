@@ -33,7 +33,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
         <div className="max-w-5xl space-y-6 mt-20">
             <div className="flex items-center justify-between">
                 <h1 className="text-4xl font-semibold">Blog</h1>
-                <p className="text-sm font-medium text-zinc-400 ">Showing page {page} of {totalPages}</p>
+                <p className="text-sm text-zinc-400 ">Showing page {page} of {totalPages}</p>
             </div>
 
             <section className="grid grid-cols-1 gap-6">
@@ -42,7 +42,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
                         <article className="border border-white/10 bg-zinc-900 rounded-xl p-5 hover:bg-zinc-800 transition-colors">
                             <h2 className="text-2xl font-bold mb-2 line-clamp-2">{post.title}</h2>
                             <div className="text-zinc-400 text-sm mb-2">{formatDate(post.createdAt)} <span className="font-bold mx-1">•</span> {calcReadTime(extractText(post.body))}</div>
-                            <p className="text-zinc-400 font-medium line-clamp-3">{extractText(post.body)}</p>
+                            <p className="text-zinc-400 line-clamp-3">{extractText(post.body)}</p>
                         </article>
                     </Link>
                 ))}

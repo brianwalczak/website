@@ -10,7 +10,7 @@ export default function Home() {
           Hey - I&apos;m Brian.
         </h1>
 
-        <p className="text-lg font-medium text-zinc-400">
+        <p className="text-lg text-zinc-400">
           I&apos;m a high school student and full-stack developer with a strong focus on back-end development. I&apos;m
           proficient in Node.js and have a solid understanding of Python. I love tinkering with electronics,
           especially Arduino.
@@ -23,7 +23,7 @@ export default function Home() {
         <div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
           <h2 className="mono text-purple-400 text-sm mb-2">Projects</h2>
 
-          <p className="text-zinc-400 text-base font-medium">
+          <p className="text-zinc-400 text-base">
             I&apos;ve built many websites and wrote cool software that helps others. I like writing code, designing hardware, and
             building random ideas all the time.
           </p>
@@ -32,7 +32,7 @@ export default function Home() {
         <div className="border border-white/10 bg-zinc-900 rounded-xl p-5 pb-8">
           <h2 className="mono text-purple-400 text-sm mb-2">Learning</h2>
 
-          <p className="text-zinc-400 text-base font-medium">
+          <p className="text-zinc-400 text-base">
             I love learning new things, whether it&apos;s a programming language, using software, or just tinkering with
             tech! If I&apos;m free, I&apos;m probably learning something new.
           </p>
@@ -41,7 +41,7 @@ export default function Home() {
         <div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
           <h2 className="mono text-purple-400 text-sm mb-2">Running Stuff</h2>
 
-          <p className="text-zinc-400 text-base font-medium">
+          <p className="text-zinc-400 text-base">
             I run a ton of services on my own server using Docker, including cloud storage for my family and
             more. I love self-hosting! :D
           </p>

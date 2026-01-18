@@ -17,7 +17,7 @@ export default function Header() {
                     target="_blank">me@brian.re</a>
             </span>
 
-            <nav className="flex gap-10 text-base font-medium text-zinc-400">
+            <nav className="flex gap-10 text-base text-zinc-400">
                 {HEADER_LINKS.map((page) => (
                     <Link key={page.url} href={page.url} className={isActive(page.url) ? 'text-zinc-100' : 'hover:text-zinc-100 transition'}>
                         {page.label}

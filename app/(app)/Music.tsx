@@ -64,7 +64,7 @@ export default function Music() {
                     )}
                     
                     <div className="flex-1 min-w-0">
-                        <p className="text-zinc-200 font-medium truncate">
+                        <p className="text-zinc-200 truncate">
                             {spotify.url ? (
                                 <a href={spotify.url} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 active:text-green-500 transition-colors">{spotify.name}</a>
                             ) : spotify.name}
