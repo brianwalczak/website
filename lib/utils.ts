@@ -1,3 +1,15 @@
+import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
+
+export function extractText(body: any): string {
+    try {
+        const data: SerializedEditorState = body;
+        return convertLexicalToPlaintext({ data });
+    } catch {
+        return '';
+    }
+}
+
 export function formatDate(str: string): string {
     const date = new Date(str);
 

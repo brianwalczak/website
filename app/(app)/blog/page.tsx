@@ -2,20 +2,9 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import Link from 'next/link';
 
-import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
-import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
-import { formatDate, calcReadTime } from '@/lib/utils';
+import { extractText, formatDate, calcReadTime } from '@/lib/utils';
 import { POSTS_PER_PAGE } from '@/lib/constants';
 import { redirect } from 'next/navigation';
-
-function extractText(body: any): string {
-    try {
-        const data: SerializedEditorState = body;
-        return convertLexicalToPlaintext({ data });
-    } catch {
-        return '';
-    }
-}
 
 export default async function Blog({ searchParams }: { searchParams?: { p?: string }}) {
     const payload = await getPayload({ config });
