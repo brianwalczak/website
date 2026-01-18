@@ -41,7 +41,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
     }
 
     return (
-        <main className="max-w-5xl space-y-6 mt-20">
+        <div className="max-w-5xl space-y-6 mt-20">
             <div className="flex items-center justify-between">
                 <h1 className="text-4xl font-semibold">Blog</h1>
                 <p className="text-sm font-medium text-zinc-400 ">Showing page {page} of {totalPages}</p>
@@ -90,6 +90,6 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
                     </Link>
                 </div>
             </nav>
-        </main>
+        </div>
     )
 }
