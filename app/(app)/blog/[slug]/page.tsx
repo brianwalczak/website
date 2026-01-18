@@ -1,6 +1,5 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import Link from 'next/link';
 
 import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { RichText as RichTextConverter } from '@payloadcms/richtext-lexical/react'
@@ -9,7 +8,35 @@ import { extractText, formatDate, calcReadTime } from '@/lib/utils';
 import { redirect } from 'next/navigation';
 
 const converters = {
-    ...defaultJSXConverters
+    ...defaultJSXConverters,
+    heading: ({ node, nodesToJSX }: { node: any; nodesToJSX: any }) => {
+        const classes = {
+            h1: 'text-4xl font-bold mt-8 mb-4',
+            h2: 'text-3xl font-bold mt-7 mb-3',
+            h3: 'text-2xl font-bold mt-6 mb-3',
+            h4: 'text-xl font-bold mt-5 mb-2',
+            h5: 'text-lg font-bold mt-4 mb-2',
+            h6: 'text-base font-bold mt-4 mb-2',
+        };
+        
+        const children = nodesToJSX({ nodes: node.children });
+        const Tag = node.tag as keyof typeof classes;
+        
+        return (
+            <Tag className={classes[Tag]}>
+                {children}
+            </Tag>
+        );
+    },
+    paragraph: ({ node, nodesToJSX }: { node: any; nodesToJSX: any }) => {
+        const children = nodesToJSX({ nodes: node.children });
+
+        return (
+            <p className="mb-4 text-xl font-medium leading-relaxed">
+                {children}
+            </p>
+        );
+    },
 };
 
 export default async function Blog({ params }: { params?: { slug?: string } }) {
