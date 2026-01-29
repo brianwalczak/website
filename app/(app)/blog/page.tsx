@@ -6,7 +6,28 @@ import { extractText, formatDate, calcReadTime } from '@/lib/utils';
 import { POSTS_PER_PAGE } from '@/lib/constants';
 import { redirect } from 'next/navigation';
 
-export const metadata = { title: "Blog | Brian's Cabin" };
+export const metadata = {
+  title: "Blog | Brian's Cabin",
+  description: "Read the latest posts from my blog, where I write about programming, technology, and other things I find interesting.",
+  alternates: {
+    canonical: "https://brian.re/blog",
+  },
+  openGraph: {
+    title: "Blog | Brian's Cabin",
+    description: "Read the latest posts from my blog, where I write about programming, technology, and other things I find interesting.",
+    url: "https://brian.re/blog",
+    siteName: "Brian's Cabin",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+};
 
 export default async function Blog({ searchParams }: { searchParams?: { p?: string }}) {
     const payload = await getPayload({ config });

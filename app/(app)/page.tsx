@@ -2,7 +2,28 @@ import QuickInfo from "./QuickInfo";
 import Skills from "./Skills";
 import Music from "./Music";
 
-export const metadata = { title: "Brian's Cabin" };
+export const metadata = {
+  title: "Brian's Cabin",
+  description: "Hej! I'm Brian, a high school student and full-stack developer with a strong focus on back-end development. I'm proficient in Node.js and have a solid understanding of Python. I've been programming for over 5 years, and I love tinkering with electronics, especially Arduino.",
+  alternates: {
+    canonical: "https://brian.re",
+  },
+  openGraph: {
+    title: "Brian's Cabin",
+    description: "Hej! I'm Brian, a high school student and full-stack developer with a strong focus on back-end development. I'm proficient in Node.js and have a solid understanding of Python. I've been programming for over 5 years, and I love tinkering with electronics, especially Arduino.",
+    url: "https://brian.re",
+    siteName: "Brian's Cabin",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+};
 
 export default function Home() {
   return (

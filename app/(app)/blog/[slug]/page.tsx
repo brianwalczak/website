@@ -6,7 +6,62 @@ import { RichText as RichTextConverter } from '@payloadcms/richtext-lexical/reac
 import { extractText, formatDate, calcReadTime } from '@/lib/utils';
 import { redirect } from 'next/navigation';
 
-export const metadata = { title: "Blog | Brian's Cabin" };
+export async function generateMetadata({ params }: { params: { slug?: string } }) {
+    try {
+        const payload = await getPayload({ config });
+        const pathParams = params ? await params : {};
+
+        if (!pathParams || pathParams.slug === undefined) throw new Error();
+
+        const search = await payload.find({
+            collection: 'posts',
+            where: {
+                slug: {
+                    equals: pathParams.slug,
+                },
+            },
+            limit: 1,
+            pagination: false
+        });
+
+        const post = search?.docs?.[0];
+        if (!post) throw new Error();
+
+        const summary = extractText(post.body).replace(/\s+/g, " ").trim().slice(0, 150) + "...";
+
+        return {
+            title: `${post.title} - Blog | Brian's Cabin`,
+            description: summary,
+            alternates: {
+                canonical: `https://brian.re/blog/${pathParams.slug}`,
+            },
+            openGraph: {
+                title: `${post.title} - Blog | Brian's Cabin`,
+                description: summary,
+                url: `https://brian.re/blog/${pathParams.slug}`,
+                siteName: "Brian's Cabin",
+                locale: "en_US",
+                type: "article",
+            },
+            robots: {
+                index: true,
+                follow: true,
+                "max-image-preview": "large",
+                "max-snippet": -1,
+                "max-video-preview": -1,
+            },
+        };
+    } catch (error) {
+        return {
+            title: "404 Not Found - Blog | Brian's Cabin",
+            description: "This blog post does not exist or is invalid.",
+            robots: {
+                index: false,
+                follow: false,
+            },
+        };
+    }
+}
 
 export default async function Blog({ params }: { params?: { slug?: string } }) {
     const payload = await getPayload({ config });
