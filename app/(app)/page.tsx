@@ -2,6 +2,8 @@ import QuickInfo from "./QuickInfo";
 import Skills from "./Skills";
 import Music from "./Music";
 
+export const metadata = { title: "Brian's Cabin" };
+
 export default function Home() {
   return (
     <>

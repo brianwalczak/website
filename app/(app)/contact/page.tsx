@@ -1,6 +1,8 @@
 import { CONTACT_LINKS, SOCIAL_LINKS } from '@/lib/constants';
 import ContactCard from '@/components/ContactCard';
 
+export const metadata = { title: "Contact | Brian's Cabin" };
+
 export default async function Contact() {
     return (
         <div className="max-w-5xl space-y-6 mt-20">

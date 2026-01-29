@@ -6,6 +6,8 @@ import { RichText as RichTextConverter } from '@payloadcms/richtext-lexical/reac
 import { extractText, formatDate, calcReadTime } from '@/lib/utils';
 import { redirect } from 'next/navigation';
 
+export const metadata = { title: "Blog | Brian's Cabin" };
+
 export default async function Blog({ params }: { params?: { slug?: string } }) {
     const payload = await getPayload({ config });
     const pathParams = params ? await params : {};
