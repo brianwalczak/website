@@ -30,16 +30,16 @@ export async function generateMetadata({ params }: { params: { slug?: string } }
         const summary = extractText(post.body).replace(/\s+/g, " ").trim().slice(0, 150) + "...";
 
         return {
-            title: `${post.title} - Blog | Brian's Cabin`,
+            title: `${post.title} - Blog | Brian Walczak`,
             description: summary,
             alternates: {
                 canonical: `https://brian.re/blog/${pathParams.slug}`,
             },
             openGraph: {
-                title: `${post.title} - Blog | Brian's Cabin`,
+                title: `${post.title} - Blog | Brian Walczak`,
                 description: summary,
                 url: `https://brian.re/blog/${pathParams.slug}`,
-                siteName: "Brian's Cabin",
+                siteName: "Brian Walczak",
                 locale: "en_US",
                 type: "article",
             },
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: { slug?: string } }
         };
     } catch (error) {
         return {
-            title: "404 Not Found - Blog | Brian's Cabin",
+            title: "404 Not Found - Blog | Brian Walczak",
             description: "This blog post does not exist or is invalid.",
             robots: {
                 index: false,

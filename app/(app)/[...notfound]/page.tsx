@@ -1,16 +1,16 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "404 Not Found | Brian's Cabin",
+  title: "404 Not Found | Brian Walczak",
   description: "The page you are looking for does not exist.",
   alternates: {
     canonical: "https://brian.re/not-found",
   },
   openGraph: {
-    title: "404 Not Found | Brian's Cabin",
+    title: "404 Not Found | Brian Walczak",
     description: "The page you are looking for does not exist.",
     url: "https://brian.re/not-found",
-    siteName: "Brian's Cabin",
+    siteName: "Brian Walczak",
     locale: "en_US",
     type: "website",
   },
