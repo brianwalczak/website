@@ -34,7 +34,7 @@ export default function Home() {
         </h1>
 
         <p className="text-lg text-zinc-400">
-          I&apos;m a high school student and full-stack developer with a strong focus on back-end development. I&apos;m
+          I&apos;m a 15 year old high school student and full-stack developer with a strong focus on back-end development. I&apos;m
           proficient in Node.js and have a solid understanding of Python. I love tinkering with electronics,
           especially Arduino.
         </p>
