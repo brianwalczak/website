@@ -45,3 +45,21 @@ body {
 .mono {
   font-family: "JetBrains Mono", monospace;
 }
+
+::view-transition-group(.fade-in) {
+  animation: fade-in 200ms ease;
+}
+
+::view-transition-group(.fade-out) {
+  animation: fade-out 200ms ease;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
