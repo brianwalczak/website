@@ -7,13 +7,13 @@ import { POSTS_PER_PAGE } from '@/lib/constants';
 import { redirect } from 'next/navigation';
 
 export const metadata = {
-  title: "Blog | Brian Walczak",
+  title: "Blog - Brian Walczak",
   description: "Read the latest posts from my blog, where I write about programming, technology, and other things I find interesting.",
   alternates: {
     canonical: "https://brian.re/blog",
   },
   openGraph: {
-    title: "Blog | Brian Walczak",
+    title: "Blog - Brian Walczak",
     description: "Read the latest posts from my blog, where I write about programming, technology, and other things I find interesting.",
     url: "https://brian.re/blog",
     siteName: "Brian Walczak",

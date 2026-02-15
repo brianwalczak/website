@@ -3,13 +3,13 @@ import Skills from "./Skills";
 import Music from "./Music";
 
 export const metadata = {
-  title: "Brian Walczak",
+  title: "Home - Brian Walczak",
   description: "Hej! I'm Brian, a high school student and full-stack developer with a strong focus on back-end development. I'm proficient in Node.js and have a solid understanding of Python. I've been programming for over 5 years, and I love tinkering with electronics, especially Arduino.",
   alternates: {
     canonical: "https://brian.re",
   },
   openGraph: {
-    title: "Brian Walczak",
+    title: "Home - Brian Walczak",
     description: "Hej! I'm Brian, a high school student and full-stack developer with a strong focus on back-end development. I'm proficient in Node.js and have a solid understanding of Python. I've been programming for over 5 years, and I love tinkering with electronics, especially Arduino.",
     url: "https://brian.re",
     siteName: "Brian Walczak",

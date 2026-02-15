@@ -2,13 +2,13 @@ import { CONTACT_LINKS, SOCIAL_LINKS } from '@/lib/constants';
 import ContactCard from '@/components/ContactCard';
 
 export const metadata = {
-  title: "Contact | Brian Walczak",
+  title: "Contact - Brian Walczak",
   description: "Feel free to reach out to me through email, social media, or other platforms listed here.",
   alternates: {
     canonical: "https://brian.re/contact",
   },
   openGraph: {
-    title: "Contact | Brian Walczak",
+    title: "Contact - Brian Walczak",
     description: "Feel free to reach out to me through email, social media, or other platforms listed here.",
     url: "https://brian.re/contact",
     siteName: "Brian Walczak",
