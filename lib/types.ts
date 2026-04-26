@@ -1,6 +1,6 @@
 export interface StatusData {
     online: boolean;
-    working: boolean;
+    type: string | null;
 }
 
 export interface MusicData {

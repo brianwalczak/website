@@ -8,7 +8,7 @@ export default function QuickInfo() {
     const [time, setTime] = useState("--:-- --");
     const [activity, setActivity] = useState<{
         online: boolean;
-        working: boolean;
+        type: string | null;
     } | null>(null);
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export default function QuickInfo() {
     useEffect(() => {
         fetch('/api/status').then(res => res.json())
             .then(setActivity) // set activity state with fetched data
-            .catch(() => setActivity({ online: false, working: false })); // shouldn't happen, but assume offline on error
+            .catch(() => setActivity({ online: false, type: null })); // shouldn't happen, but assume offline on error
     }, []);
 
     return (
@@ -53,16 +53,20 @@ export default function QuickInfo() {
                 ) : (
                     <>
                         <div className="flex items-center gap-2">
-                            <div className={`w-2 h-2 rounded-full ${activity.online ? (activity.working ? "bg-yellow-400 animate-pulse" : "bg-green-400 animate-pulse") : "bg-gray-400"}`}></div>
-                            <p className="text-zinc-100">{activity.online ? (activity.working ? "Working on a project" : "Online") : "Offline"}</p>
+                            <div className={`w-2 h-2 rounded-full ${activity.online ? (activity.type === 'coding' ? "bg-yellow-400 animate-pulse" : "bg-green-400 animate-pulse") : "bg-gray-400"}`}></div>
+                            <p className="text-zinc-100">{activity.online ? (activity.type === 'coding' ? "Working on a project" : "Online") : "Offline"}</p>
                         </div>
 
-                        {activity.online && activity.working && (
+                        {activity.online && activity.type === 'coding' && (
                             <p className="text-zinc-300 font-normal text-sm mt-3">I&apos;m currently working on a project in Visual Studio Code!</p>
                         )}
 
-                        {activity.online && !activity.working && (
+                        {activity.online && activity.type === 'chatting' && (
                             <p className="text-zinc-300 font-normal text-sm mt-3">I&apos;m currently chatting over on the <a href='https://hackclub.com/slack/' className='underline text-[#ec3750]' target='_blank' rel='noopener noreferrer'>Hack Club</a> Slack!</p>
+                        )}
+
+                        {activity.online && activity.type === null && (
+                            <p className="text-zinc-300 font-normal text-sm mt-3">My computer or phone is on... I wonder what I&apos;m up to!</p>
                         )}
 
                         {!activity.online && (
