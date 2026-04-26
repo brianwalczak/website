@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: { params: { slug?: string } }
                 slug: {
                     equals: pathParams.slug,
                 },
+                visibility: {
+                    not_equals: 'private',
+                },
             },
             limit: 1,
             pagination: false
@@ -76,6 +79,9 @@ export default async function Blog({ params }: { params?: { slug?: string } }) {
         where: {
             slug: {
                 equals: pathParams.slug,
+            },
+            visibility: {
+                not_equals: 'private',
             },
         },
         limit: 1,

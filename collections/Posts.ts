@@ -42,11 +42,34 @@ export const Posts: CollectionConfig = {
       required: true,
     },
     {
-      label: 'Published Date',
-      name: "createdAt",
-      type: "date",
-      required: true,
-      defaultValue: () => new Date().toISOString(),
+      type: 'row',
+      fields: [
+        {
+          label: 'Published Date',
+          name: "createdAt",
+          type: "date",
+          required: true,
+          defaultValue: () => new Date().toISOString(),
+          admin: {
+            width: '66%',
+          },
+        },
+        {
+          label: 'Visibility',
+          name: 'visibility',
+          type: 'select',
+          defaultValue: 'public',
+          required: true,
+          options: [
+            { label: 'Public', value: 'public' },
+            { label: 'Unlisted', value: 'unlisted' },
+            { label: 'Private', value: 'private' },
+          ],
+          admin: {
+            width: '33%',
+          },
+        },
+      ],
     },
   ],
 }

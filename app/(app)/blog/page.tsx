@@ -42,6 +42,11 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 
     const posts = await payload.find({
         collection: 'posts',
+        where: {
+            visibility: {
+                equals: 'public',
+            },
+        },
         limit: POSTS_PER_PAGE,
         page: page,
         sort: '-createdAt'
