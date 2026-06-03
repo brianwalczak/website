@@ -1,7 +1,17 @@
 export interface StatusData {
-    online: boolean;
-    type: string | null;
+    header: string;
+    label: string;
+    color: string;
+    pulse?: boolean;
+    updatedAt?: string;
 }
+
+export const DEFAULT_STATUS: StatusData = {
+    header: "Offline",
+    label: "I'm currently away from my computer, probably sleeping or just chilling.",
+    color: "gray",
+    pulse: false
+};
 
 export interface MusicData {
     name: string | null;
