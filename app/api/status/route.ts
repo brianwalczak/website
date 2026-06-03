@@ -10,7 +10,7 @@ let expiresAt: number = 0;
 
 export async function GET() {
     // return default offline status if disabled
-    if (process.env.STATUS_ENABLED === 'false') {
+    if (process.env.STATUS_ENABLED != 'true') {
         return NextResponse.json(DEFAULT_STATUS);
     }
 

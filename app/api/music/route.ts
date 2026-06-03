@@ -85,7 +85,7 @@ async function getCurrentTrack(retry = false) {
 }
 
 export async function GET() {
-    if (process.env.SPOTIFY_ENABLED === 'false') {
+    if (process.env.SPOTIFY_ENABLED != 'true') {
         return NextResponse.json({ name: null, artist: null, playing: null, url: null, albumArtUrl: null, position: null, duration: null });
     }
 
