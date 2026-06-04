@@ -11,6 +11,8 @@
 
 ... and written in Typescript (`eslint` for linting)!
 
+> My live status is powered by [cabin-client](https://github.com/brianwalczak/cabin-client), a desktop daemon running on my computer!
+
 ### Setup
 To start, clone the repository and configure your environment variables:
 ```bash
