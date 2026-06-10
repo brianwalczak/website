@@ -6,6 +6,15 @@ export interface StatusData {
     updatedAt?: string;
 }
 
+export interface DeviceStatus {
+    priority: number;
+    status: StatusData | Record<string, never>; // StatusData or empty {} if no status
+}
+
+export interface StatusStore {
+    [deviceId: string]: DeviceStatus;
+}
+
 export const DEFAULT_STATUS: StatusData = {
     header: "Offline",
     label: "I'm currently away from my computer, probably sleeping or just chilling.",

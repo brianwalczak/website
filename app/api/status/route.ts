@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { DEFAULT_STATUS, StatusData } from '@/lib/types';
+import { DEFAULT_STATUS, StatusStore, StatusData } from '@/lib/types';
 import { redis } from '@/lib/redis';
 
 const CACHE_TTL = 30 * 1000;
@@ -20,18 +20,34 @@ export async function GET() {
     }
 
     try {
-        const result = await redis.get<StatusData>('status');
+        const result = await redis.get<StatusStore | null>('status');
 
-        // use Redis result if it's not stale!
+        // use Redis result if it's there!
         if (result) {
-            if (result.updatedAt) {
-                const stale = Date.now() - new Date(result.updatedAt).getTime() > STALE_THRESHOLD;
-                if (stale) return NextResponse.json(DEFAULT_STATUS);
+            let winningPriority = Infinity;
+            let winningStatus: StatusData | null = null;
+            
+            for (const device of Object.keys(result)) {
+                if (result[device].priority > winningPriority) continue; // skip lower priority statuses
+                if (Object.keys(result[device]?.status).length === 0) continue; // skip empty statuses
+                
+                const status = result[device].status as StatusData;
+
+                if (status?.updatedAt) {
+                    const stale = Date.now() - new Date(status.updatedAt).getTime() > STALE_THRESHOLD;
+                    if (stale) continue; // skip stale statuses
+                }
+
+                // everything looks good, let's use this status for now!
+                winningPriority = result[device].priority;
+                winningStatus = status;
             }
 
-            cache = result;
-            expiresAt = Date.now() + CACHE_TTL;
-            return NextResponse.json(cache);
+            if (winningStatus) {
+                cache = winningStatus;
+                expiresAt = Date.now() + CACHE_TTL;
+                return NextResponse.json(cache);
+            }
         }
     } catch {
         // something went wrong (Redis down? idk don't cache tho so we can try again next time)
