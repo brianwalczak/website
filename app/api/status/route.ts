@@ -28,7 +28,7 @@ export async function GET() {
             let winningStatus: StatusData | null = null;
             
             for (const device of Object.keys(result)) {
-                if (result[device].priority > winningPriority) continue; // skip lower priority statuses
+                if (result[device].priority >= winningPriority) continue; // skip lower priority statuses
                 if (Object.keys(result[device]?.status).length === 0) continue; // skip empty statuses
                 
                 const status = result[device].status as StatusData;
