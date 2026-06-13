@@ -20,10 +20,10 @@ export async function GET() {
     }
 
     try {
-        const result = await redis.get<StatusStore | null>('status');
+        const result = await redis.hgetall<StatusStore>('status');
 
         // use Redis result if it's there!
-        if (result) {
+        if (result && Object.keys(result).length > 0) {
             let winningPriority = Infinity;
             let winningStatus: StatusData | null = null;
             
