@@ -1,38 +1,41 @@
 {
-  "name": "brians-cabin",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build && npx tsx ./node_modules/payload/bin.js migrate",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "@payloadcms/db-sqlite": "^3.70.0",
-    "@payloadcms/next": "^3.70.0",
-    "@payloadcms/richtext-lexical": "^3.70.0",
-    "@payloadcms/storage-vercel-blob": "^3.10.0",
-    "@tailwindcss/typography": "^0.5.19",
-    "@upstash/redis": "^1.38.0",
-    "graphql": "^16.12.0",
-    "next": "16.1.1",
-    "payload": "^3.70.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "three": "^0.184.0"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@types/three": "^0.184.1",
-    "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.1",
-    "tailwindcss": "^4",
-    "tsx": "^4.21.0",
-    "typescript": "^5"
-  }
+	"name": "brians-cabin",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build && npx tsx ./node_modules/payload/bin.js migrate",
+		"start": "next start",
+		"lint": "eslint",
+		"format": "prettier . --write",
+		"format:check": "prettier . --check"
+	},
+	"dependencies": {
+		"@payloadcms/db-sqlite": "^3.70.0",
+		"@payloadcms/next": "^3.70.0",
+		"@payloadcms/richtext-lexical": "^3.70.0",
+		"@payloadcms/storage-vercel-blob": "^3.10.0",
+		"@tailwindcss/typography": "^0.5.19",
+		"@upstash/redis": "^1.38.0",
+		"graphql": "^16.12.0",
+		"next": "16.1.1",
+		"payload": "^3.70.0",
+		"react": "19.2.3",
+		"react-dom": "19.2.3",
+		"three": "^0.184.0"
+	},
+	"devDependencies": {
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"@types/three": "^0.184.1",
+		"babel-plugin-react-compiler": "1.0.0",
+		"eslint": "^9",
+		"eslint-config-next": "16.1.1",
+		"tailwindcss": "^4",
+		"tsx": "^4.21.0",
+		"typescript": "^5",
+		"prettier": "^3.8.3"
+	}
 }
