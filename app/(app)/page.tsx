@@ -1,4 +1,5 @@
 import QuickInfo from "./QuickInfo";
+import PrinterSection from "./PrinterSection";
 import Skills from "./Skills";
 import Music from "./Music";
 
@@ -35,6 +36,7 @@ export default function Home() {
 			</section>
 
 			<QuickInfo />
+			{process.env.PRINT_ENABLED === "true" && <PrinterSection />}
 
 			<section className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr mt-6">
 				<div className="border border-white/10 bg-zinc-900 rounded-xl p-5">

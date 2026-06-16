@@ -16,9 +16,11 @@
 		"@payloadcms/richtext-lexical": "^3.70.0",
 		"@payloadcms/storage-vercel-blob": "^3.10.0",
 		"@tailwindcss/typography": "^0.5.19",
+		"@upstash/ratelimit": "^2.0.8",
 		"@upstash/redis": "^1.38.0",
 		"graphql": "^16.12.0",
 		"next": "16.1.1",
+		"obscenity": "^0.4.6",
 		"payload": "^3.70.0",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
@@ -33,9 +35,9 @@
 		"babel-plugin-react-compiler": "1.0.0",
 		"eslint": "^9",
 		"eslint-config-next": "16.1.1",
+		"prettier": "^3.8.3",
 		"tailwindcss": "^4",
 		"tsx": "^4.21.0",
-		"typescript": "^5",
-		"prettier": "^3.8.3"
+		"typescript": "^5"
 	}
 }

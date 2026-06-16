@@ -1,5 +1,6 @@
 export const LOCAL_TIMEZONE = { label: "Central Time (McKinney, TX, USA)", value: "America/Chicago" };
 export const POSTS_PER_PAGE = 12;
+export const MAX_PRINTER_CHARS = 65;
 
 export const HEADER_LINKS = [
 	{ label: "Home", url: "/" },
