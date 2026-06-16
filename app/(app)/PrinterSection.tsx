@@ -9,7 +9,7 @@ export default function PrinterSection() {
 	return (
 		<>
 			<section className="mt-6">
-				<button onClick={() => setShowModal(true)} className="group w-full text-left border border-white/10 bg-zinc-900 hover:bg-zinc-800 hover:border-purple-500/40 rounded-xl p-5 transition-all duration-200 cursor-pointer">
+				<button onClick={() => setShowModal(true)} className="group w-full text-left border border-white/10 bg-zinc-900 hover:bg-zinc-800 hover:border-purple-500/40 rounded-xl p-5 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:outline-none">
 					<div className="flex items-center justify-between gap-4">
 						<div className="flex items-center gap-3 min-w-0">
 							<div className="shrink-0 bg-purple-500/10 border border-purple-500/20 group-hover:bg-purple-500/20 group-hover:border-purple-500/40 rounded-lg p-2 transition-all duration-200">
