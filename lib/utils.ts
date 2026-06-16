@@ -1,9 +1,8 @@
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { convertLexicalToPlaintext } from "@payloadcms/richtext-lexical/plaintext";
 
-export function extractText(body: any): string {
+export function extractText(data: SerializedEditorState): string {
 	try {
-		const data: SerializedEditorState = body;
 		return convertLexicalToPlaintext({ data });
 	} catch {
 		return "";

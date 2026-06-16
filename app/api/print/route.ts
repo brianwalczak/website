@@ -15,7 +15,7 @@ const matcher = new RegExpMatcher({
 });
 
 export async function POST(req: NextRequest) {
-	const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || req.headers.get("cf-connecting-ip") || (req as any).ip || "127.0.0.1";
+	const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || req.headers.get("cf-connecting-ip") || "127.0.0.1";
 	const body = await req.json().catch(() => null);
 
 	// Check if printing is enabled

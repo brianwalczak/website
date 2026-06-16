@@ -7,6 +7,20 @@ function InviteModal({ onClose }: { onClose: () => void }) {
 	const [loading, setLoading] = useState(false);
 	const [message, setMessage] = useState("");
 
+	const handleClose = useCallback(() => {
+		setVisible(false);
+		if (onClose) setTimeout(onClose, FADE_DURATION);
+	}, [onClose]);
+
+	const handleKeyDown = useCallback(
+		(e: KeyboardEvent) => {
+			if (e.key === "Escape") {
+				handleClose();
+			}
+		},
+		[handleClose],
+	);
+
 	useEffect(() => {
 		const id = requestAnimationFrame(() => setVisible(true));
 		window.addEventListener("keydown", handleKeyDown);
@@ -15,18 +29,7 @@ function InviteModal({ onClose }: { onClose: () => void }) {
 			cancelAnimationFrame(id);
 			window.removeEventListener("keydown", handleKeyDown);
 		};
-	}, []);
-
-	const handleClose = useCallback(() => {
-		setVisible(false);
-		if (onClose) setTimeout(onClose, FADE_DURATION);
-	}, [onClose]);
-
-	const handleKeyDown = (e: KeyboardEvent) => {
-		if (e.key === "Escape") {
-			handleClose();
-		}
-	};
+	}, [handleKeyDown]);
 
 	const handleClickAway = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (e.target === e.currentTarget) {

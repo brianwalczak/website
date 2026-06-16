@@ -5,6 +5,7 @@ import Link from "next/link";
 import { extractText, formatDate, calcReadTime } from "@/lib/utils";
 import { POSTS_PER_PAGE } from "@/lib/constants";
 import { redirect } from "next/navigation";
+import type { Post } from "@/payload-types";
 
 export const metadata = {
 	title: "Blog - Brian Walczak",
@@ -67,7 +68,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 			</div>
 
 			<section className="grid grid-cols-1 gap-6">
-				{posts?.docs?.map((post: any) => (
+				{posts?.docs?.map((post: Post) => (
 					<Link key={post.id} href={`/blog/${post.slug}`} className="block">
 						<article className="border border-white/10 bg-zinc-900 rounded-xl p-5 hover:bg-zinc-800 transition-colors">
 							<h2 className="text-2xl font-bold mb-2 line-clamp-2">{post.title}</h2>

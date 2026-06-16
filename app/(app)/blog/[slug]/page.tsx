@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: { slug?: string } }
 				"max-video-preview": -1,
 			},
 		};
-	} catch (error) {
+	} catch {
 		return {
 			title: "Not found | Blog - Brian Walczak",
 			description: "This blog post does not exist or is invalid.",
