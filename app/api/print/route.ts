@@ -46,14 +46,14 @@ export async function POST(req: NextRequest) {
 	}
 
 	// Check if the IP address is a known VPN/proxy
-	if (process.env.PRINT_VPN_CHECK != "false") {
+	if (process.env.PRINT_VPN_CHECK != "false" && process.env.PRINT_VPN_CHECK_API_KEY) {
 		try {
-			const req = await fetch(`http://ip-api.com/json/${ip}?fields=status,message,proxy&lang=en`);
+			const req = await fetch(`https://proxycheck.io/v3/${ip}?key=${process.env.PRINT_VPN_CHECK_API_KEY}`);
 			const res = await req.json();
 
-			if (res.status !== "success" && res.message !== "reserved range") {
-				throw new Error("Not successful."); // fallback to the catch
-			} else if (res.proxy === true) {
+			if (res.status === "denied" || res.status === "error") {
+				throw null; // fallback to the catch
+			} else if (res?.[ip]?.detections?.proxy === true || res?.[ip]?.detections?.vpn === true || res?.[ip]?.detections?.tor === true) {
 				return NextResponse.json({ error: "Sorry, VPNs and proxies are not allowed to send messages to the printer. I know it's frustrating, but I just want to prevent abuse. :((" }, { status: 400 });
 			}
 		} catch {
