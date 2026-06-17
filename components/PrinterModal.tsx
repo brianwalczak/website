@@ -51,7 +51,7 @@ function InviteModal({ onClose }: { onClose: () => void }) {
 
 				const res = await req.json();
 
-				if (!res.ok || res.error) {
+				if (!res.success || res.error) {
 					alert(res.error || "An error occurred while sending your message to the printer.");
 				} else {
 					alert("Your message has been sent to the printer! It should print within around 30 seconds (or whenever my computer is turned on).");
