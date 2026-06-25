@@ -59,6 +59,10 @@ html {
 	--surface-hover: #25324c;
 	--surface-border: #353e51;
 	--surface-border-hover: #465167;
+	--header: #c7d2e9;
+	--text: #8d9db8;
+	--text-hover: #7a8da6;
+	--text-disabled: #4d5669;
 }
 
 @theme {
@@ -67,7 +71,10 @@ html {
 	--color-surface-hover: var(--surface-hover);
 	--color-surface-border: var(--surface-border);
 	--color-surface-border-hover: var(--surface-border-hover);
+	--color-header: var(--header);
 	--color-text: var(--text);
+	--color-text-hover: var(--text-hover);
+	--color-text-disabled: var(--text-disabled);
 }
 
 body {

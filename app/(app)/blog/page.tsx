@@ -61,8 +61,8 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 	return (
 		<div className="max-w-5xl space-y-6 mt-20">
 			<div className="flex items-center justify-between">
-				<h1 className="text-4xl font-semibold">Blog</h1>
-				<p className="text-sm text-zinc-400 ">
+				<h1 className="text-4xl text-header font-semibold">Blog</h1>
+				<p className="text-sm">
 					Showing page {page} of {totalPages}
 				</p>
 			</div>
@@ -71,21 +71,21 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 				{posts?.docs?.map((post: Post) => (
 					<Link key={post.id} href={`/blog/${post.slug}`} className="block">
 						<article className="border border-surface-border bg-surface rounded-xl p-5 hover:bg-surface-hover transition-colors">
-							<h2 className="text-2xl font-bold mb-2 line-clamp-2">{post.title}</h2>
-							<div className="text-zinc-400 text-sm mb-2">
+							<h2 className="text-2xl font-bold mb-2 line-clamp-2 text-header">{post.title}</h2>
+							<div className="text-sm mb-2">
 								{formatDate(post.createdAt)} <span className="font-bold mx-1">•</span> {calcReadTime(extractText(post.body))}
 							</div>
-							<p className="text-zinc-400 line-clamp-3">{extractText(post.body)}</p>
+							<p className="line-clamp-3">{extractText(post.body)}</p>
 						</article>
 					</Link>
 				))}
 
-				{posts?.docs?.length === 0 && <p className="text-zinc-400 font-semibold text-lg">No posts found :( Check back later!</p>}
+				{posts?.docs?.length === 0 && <p className="text-header font-semibold text-lg">No posts found :( Check back later!</p>}
 			</section>
 
 			<nav className="flex items-center justify-between">
 				<div>
-					<Link href={`/blog?p=${Math.max(1, page - 1)}`} className={`${page > 1 ? "text-zinc-100 hover:text-zinc-300 transition-colors" : "text-zinc-600 pointer-events-none"}`} aria-disabled={page <= 1}>
+					<Link href={`/blog?p=${Math.max(1, page - 1)}`} className={`${page > 1 ? "hover:text-text-hover transition-colors" : "text-text-disabled pointer-events-none"}`} aria-disabled={page <= 1}>
 						<span className="flex items-center justify-center font-semibold">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-3.5 mr-1">
 								<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -96,12 +96,12 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 					</Link>
 				</div>
 
-				<div className="text-sm font-semibold text-zinc-400">
+				<div className="text-sm font-semibold">
 					Page {page} of {totalPages}
 				</div>
 
 				<div>
-					<Link href={`/blog?p=${Math.min(totalPages, page + 1)}`} className={`${page < totalPages ? "text-zinc-100 hover:text-zinc-300 transition-colors" : "text-zinc-600 pointer-events-none"}`} aria-disabled={page >= totalPages}>
+					<Link href={`/blog?p=${Math.min(totalPages, page + 1)}`} className={`${page < totalPages ? "hover:text-text-hover transition-colors" : "text-text-disabled pointer-events-none"}`} aria-disabled={page >= totalPages}>
 						<span className="flex items-center justify-center font-semibold">
 							<span>Next</span>
 

@@ -92,10 +92,10 @@ export default async function Blog({ params }: { params?: { slug?: string } }) {
 	if (!post) redirect(`/blog`);
 
 	return (
-		<article className="prose max-w-5xl mt-12">
+		<article className="prose max-w-5xl mt-12 text-text">
 			<header className="mb-6">
-				<h1 className="title">{post.title}</h1>
-				<div className="text-zinc-300 text-xl font-semibold mb-2">
+				<h1 className="title text-header">{post.title}</h1>
+				<div className="text-xl font-semibold text-header mb-2">
 					Published on {formatDate(post.createdAt)} <span className="font-bold mx-1">•</span> {calcReadTime(extractText(post.body))}
 				</div>
 			</header>

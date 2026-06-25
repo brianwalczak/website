@@ -39,26 +39,26 @@ export default function QuickInfo() {
 	return (
 		<section className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
 			<div className="border border-surface-border bg-surface rounded-xl p-5">
-				<h2 className="mono text-blue-400 text-sm mb-2">Local Time</h2>
-				<p className="mono text-zinc-100 text-2xl font-extrabold">{time}</p>
-				<p className="text-zinc-500 text-xs mt-3">{LOCAL_TIMEZONE.label}</p>
+				<h2 className="text-blue-400 text-base mb-2">Local Time</h2>
+				<p className="text-header text-2xl font-extrabold">{time}</p>
+				<p className="text-xs mt-3">{LOCAL_TIMEZONE.label}</p>
 			</div>
 
 			<div className="border border-surface-border bg-surface rounded-xl p-5">
-				<h2 className="mono text-green-400 text-sm mb-3">Status</h2>
+				<h2 className="text-green-400 text-base mb-2">Status</h2>
 
 				{!activity ? (
-					<span className="text-white inline-flex items-center gap-1">
+					<span className="inline-flex items-center gap-1">
 						Loading, you&apos;ll find out what I&apos;m up too soon! <Image src="/yayayayayay.gif" alt="yayyy!" width={18} height={18} className="size-4.5" unoptimized />
 					</span>
 				) : (
 					<>
 						<div className="flex items-center gap-2">
 							<div className={`w-2 h-2 rounded-full bg-${activity.color}-400 ${activity.pulse ? "animate-pulse" : ""}`}></div>
-							<p className="text-zinc-100">{activity.header}</p>
+							<p className="text-header">{activity.header}</p>
 						</div>
 
-						<p className="text-zinc-300 font-normal text-sm mt-3">{activity.label}</p>
+						<p className="text-sm mt-3">{activity.label}</p>
 					</>
 				)}
 			</div>

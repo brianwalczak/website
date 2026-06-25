@@ -17,7 +17,7 @@ export default function RootLayout({
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<Analytics />
 			</head>
-			<body className="min-h-screen flex flex-col bg-backdrop text-zinc-100">
+			<body className="min-h-screen flex flex-col bg-backdrop text-text">
 				<PopTransition />
 
 				<div className="relative mx-auto max-w-5xl px-6 py-16 flex-1 w-full flex flex-col">
