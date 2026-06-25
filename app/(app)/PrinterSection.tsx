@@ -9,7 +9,7 @@ export default function PrinterSection() {
 	return (
 		<>
 			<section className="mt-6">
-				<button onClick={() => setShowModal(true)} className="group w-full text-left border border-white/10 bg-zinc-900 hover:bg-zinc-800 hover:border-purple-500/40 rounded-xl p-5 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:outline-none">
+				<button onClick={() => setShowModal(true)} className="group w-full text-left border border-surface-border bg-surface hover:bg-surface-hover hover:border-purple-500/40 rounded-xl p-5 transition-all duration-200 cursor-pointer focus:outline-none focus-visible:outline-none">
 					<div className="flex items-center justify-between gap-4">
 						<div className="flex items-center gap-3 min-w-0">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-7 text-purple-400 ml-1 mr-1.5">
@@ -22,7 +22,7 @@ export default function PrinterSection() {
 							</div>
 						</div>
 
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-4 text-zinc-600 group-hover:text-purple-400 shrink-0">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-4 text-zinc-400 group-hover:text-purple-400 shrink-0">
 							<path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
 						</svg>
 					</div>

@@ -9,7 +9,7 @@ type Props = {
 
 export default function ContactCard({ label, value, url, icon }: Props) {
 	return (
-		<a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center border border-white/10 bg-zinc-900 hover:bg-zinc-800 rounded-xl p-6 gap-4 transition">
+		<a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center border border-surface-border bg-surface hover:bg-surface-hover rounded-xl p-6 gap-4 transition">
 			{icon && <div className="text-purple-400">{icon}</div>}
 
 			<div className="flex-1">

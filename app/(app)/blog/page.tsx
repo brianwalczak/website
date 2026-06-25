@@ -70,7 +70,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 			<section className="grid grid-cols-1 gap-6">
 				{posts?.docs?.map((post: Post) => (
 					<Link key={post.id} href={`/blog/${post.slug}`} className="block">
-						<article className="border border-white/10 bg-zinc-900 rounded-xl p-5 hover:bg-zinc-800 transition-colors">
+						<article className="border border-surface-border bg-surface rounded-xl p-5 hover:bg-surface-hover transition-colors">
 							<h2 className="text-2xl font-bold mb-2 line-clamp-2">{post.title}</h2>
 							<div className="text-zinc-400 text-sm mb-2">
 								{formatDate(post.createdAt)} <span className="font-bold mx-1">•</span> {calcReadTime(extractText(post.body))}

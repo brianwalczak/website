@@ -38,8 +38,8 @@ html {
 }
 
 @font-face {
-	font-family: "Overused Grotesk";
-	src: url("/fonts/OverusedGrotesk.ttf") format("truetype");
+	font-family: "Rubik";
+	src: url("/fonts/Rubik.ttf") format("truetype");
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: swap;
@@ -53,13 +53,30 @@ html {
 	font-display: swap;
 }
 
+:root {
+	--backdrop: #111724;
+	--surface: #1e293e;
+	--surface-hover: #25324c;
+	--surface-border: #353e51;
+	--surface-border-hover: #465167;
+}
+
+@theme {
+	--color-backdrop: var(--backdrop);
+	--color-surface: var(--surface);
+	--color-surface-hover: var(--surface-hover);
+	--color-surface-border: var(--surface-border);
+	--color-surface-border-hover: var(--surface-border-hover);
+	--color-text: var(--text);
+}
+
 body {
-	font-family: "Overused Grotesk", system-ui, sans-serif;
+	font-family: "Rubik", system-ui, sans-serif;
 	@apply font-medium;
 }
 
 .mono {
-	font-family: "JetBrains Mono", monospace;
+	font-family: "JetBrains Mono", monospace !important;
 }
 
 ::view-transition-group(.fade-in) {

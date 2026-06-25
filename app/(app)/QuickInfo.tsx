@@ -38,13 +38,13 @@ export default function QuickInfo() {
 
 	return (
 		<section className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
-			<div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
+			<div className="border border-surface-border bg-surface rounded-xl p-5">
 				<h2 className="mono text-blue-400 text-sm mb-2">Local Time</h2>
 				<p className="mono text-zinc-100 text-2xl font-extrabold">{time}</p>
 				<p className="text-zinc-500 text-xs mt-3">{LOCAL_TIMEZONE.label}</p>
 			</div>
 
-			<div className="border border-white/10 bg-zinc-900 rounded-xl p-5">
+			<div className="border border-surface-border bg-surface rounded-xl p-5">
 				<h2 className="mono text-green-400 text-sm mb-3">Status</h2>
 
 				{!activity ? (
