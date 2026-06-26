@@ -61,7 +61,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 	return (
 		<div className="max-w-5xl space-y-6 mt-20">
 			<div className="flex items-center justify-between">
-				<h1 className="text-4xl text-header font-semibold">Blog</h1>
+				<h1 className="text-3xl sm:text-4xl text-header font-semibold">Blog</h1>
 				<p className="text-sm">
 					Showing page {page} of {totalPages}
 				</p>
@@ -71,7 +71,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 				{posts?.docs?.map((post: Post) => (
 					<Link key={post.id} href={`/blog/${post.slug}`} className="block">
 						<article className="border border-surface-border bg-surface rounded-xl p-5 hover:bg-surface-hover transition-colors">
-							<h2 className="text-2xl font-bold mb-2 line-clamp-2 text-header">{post.title}</h2>
+							<h2 className="text-xl sm:text-2xl font-bold mb-2 line-clamp-2 text-header">{post.title}</h2>
 							<div className="text-sm mb-2">
 								{formatDate(post.createdAt)} <span className="font-bold mx-1">•</span> {calcReadTime(extractText(post.body))}
 							</div>
@@ -80,7 +80,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 					</Link>
 				))}
 
-				{posts?.docs?.length === 0 && <p className="text-header font-semibold text-lg">No posts found :( Check back later!</p>}
+				{posts?.docs?.length === 0 && <p className="text-header font-semibold text-base sm:text-lg">No posts found :( Check back later!</p>}
 			</section>
 
 			<nav className="flex items-center justify-between">

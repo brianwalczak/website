@@ -20,7 +20,7 @@ export default function Header() {
 				</a>
 			</span>
 
-			<nav className="flex gap-10 text-base">
+			<nav className="flex gap-6 text-sm sm:text-base sm:gap-10">
 				{HEADER_LINKS.map((page) => (
 					<Link key={page.url} href={page.url} className={isActive(page.url) ? "text-zinc-200" : "hover:text-text-hover transition"}>
 						{page.label}

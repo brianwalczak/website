@@ -28,7 +28,7 @@ export default async function Contact() {
 	return (
 		<div className="max-w-5xl space-y-6 mt-20">
 			<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-2">
-				<h1 className="text-header text-4xl font-semibold">Contact me</h1>
+				<h1 className="text-header text-3xl sm:text-4xl font-semibold">Contact me</h1>
 				<p>Feel free to contact me through any of the options below.</p>
 			</div>
 

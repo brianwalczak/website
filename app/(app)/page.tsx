@@ -30,9 +30,9 @@ export default function Home() {
 	return (
 		<>
 			<section className="max-w-2xl space-y-4 mt-20">
-				<h1 className="text-5xl text-header font-semibold">Hey, I&apos;m Brian!</h1>
+				<h1 className="text-4xl sm:text-5xl text-header font-semibold">Hey, I&apos;m Brian!</h1>
 
-				<p className="text-lg">I&apos;m a 16 year old high school student and full-stack developer with a strong focus on back-end development. I&apos;m proficient in Node.js and have a solid understanding of Python. I love tinkering with electronics, especially Arduino.</p>
+				<p className="text-base sm:text-lg">I&apos;m a 16 year old high school student and full-stack developer with a strong focus on back-end development. I&apos;m proficient in Node.js and have a solid understanding of Python. I love tinkering with electronics, especially Arduino.</p>
 			</section>
 
 			<QuickInfo />
@@ -62,9 +62,9 @@ export default function Home() {
 			<Skills />
 
 			<section className="mt-32 mb-16 text-center">
-				<h2 className="text-4xl font-extrabold text-header mb-6">Proud member of Hack Club. ❤️</h2>
-				<p className="text-lg font-bold mb-8">I&apos;m fortunate enough to be a member of Hack Club, a nonprofit organization with an amazing community of teen hackers and creators. Some of my projects were funded by Hack Club, and they wouldn&apos;t be made possible without them!</p>
-				<p className="text-lg font-bold">
+				<h2 className="text-3xl sm:text-4xl font-extrabold text-header mb-6">Proud member of Hack Club. ❤️</h2>
+				<p className="text-base sm:text-lg font-bold mb-8">I&apos;m fortunate enough to be a member of Hack Club, a nonprofit organization with an amazing community of teen hackers and creators. Some of my projects were funded by Hack Club, and they wouldn&apos;t be made possible without them!</p>
+				<p className="text-base sm:text-lg font-bold">
 					If you&apos;re a teen who&apos;s interested in coding, hardware, robotics, or just hacking, consider{" "}
 					<a href="https://hackclub.com/slack" target="_blank" rel="noopener noreferrer" className="underline">
 						joining us here
