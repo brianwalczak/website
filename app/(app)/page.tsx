@@ -63,8 +63,8 @@ export default function Home() {
 
 			<section className="mt-32 mb-16 text-center">
 				<h2 className="text-4xl font-extrabold text-header mb-6">Proud member of Hack Club. ❤️</h2>
-				<p className="text-md font-bold mb-8">I&apos;m fortunate enough to be a member of Hack Club, a nonprofit organization with an amazing community of teen hackers and creators. Some of my projects were funded by Hack Club, and they wouldn&apos;t be made possible without them!</p>
-				<p className="text-md font-bold">
+				<p className="text-lg font-bold mb-8">I&apos;m fortunate enough to be a member of Hack Club, a nonprofit organization with an amazing community of teen hackers and creators. Some of my projects were funded by Hack Club, and they wouldn&apos;t be made possible without them!</p>
+				<p className="text-lg font-bold">
 					If you&apos;re a teen who&apos;s interested in coding, hardware, robotics, or just hacking, consider{" "}
 					<a href="https://hackclub.com/slack" target="_blank" rel="noopener noreferrer" className="underline">
 						joining us here

@@ -6,35 +6,121 @@
 html {
 	scrollbar-gutter: stable;
 }
-@plugin "@tailwindcss/typography";
 
-.prose {
-	@apply prose-xl prose-invert;
-}
-.prose h1 {
-	@apply text-4xl font-bold mt-8 mb-4;
-}
-.prose h2 {
-	@apply text-3xl font-bold mt-7 mb-3;
-}
-.prose h3 {
-	@apply text-2xl font-bold mt-6 mb-3;
-}
-.prose h4 {
-	@apply text-xl font-bold mt-5 mb-2;
-}
-.prose h5 {
-	@apply text-lg font-bold mt-4 mb-2;
-}
-.prose h6 {
-	@apply text-base font-bold mt-4 mb-2;
-}
-.prose p {
-	@apply mb-4 text-xl tracking-[0.015em];
+article.post {
+  @apply max-w-5xl mt-16;
 }
 
-.prose h1.title {
-	@apply text-5xl;
+article.post .header {
+  @apply mb-10 border-b border-surface-border pb-6;
+}
+
+article.post .header .title {
+  @apply text-4xl sm:text-5xl text-header font-bold tracking-tight;
+}
+
+article.post .header .meta {
+  @apply mt-4 text-base sm:text-lg font-semibold;
+}
+
+article.post .rich-content ::selection {
+  background: var(--surface-hover);
+  color: var(--header);
+}
+
+article.post .rich-content > *:first-child {
+  @apply mt-0;
+}
+
+article.post .rich-content > *:last-child {
+  @apply mb-0;
+}
+
+article.post .rich-content h1 {
+  @apply mt-12 mb-5 text-4xl text-header font-bold tracking-tight;
+  line-height: 1.12;
+}
+
+article.post .rich-content h2 {
+  @apply mt-10 mb-4 text-3xl text-header font-bold tracking-tight;
+  line-height: 1.15;
+}
+
+article.post .rich-content h3 {
+  @apply mt-8 mb-4 text-2xl text-header font-bold tracking-tight;
+  line-height: 1.2;
+}
+
+article.post .rich-content h4 {
+  @apply mt-7 mb-3 text-xl text-header font-bold;
+  line-height: 1.25;
+}
+
+article.post .rich-content h5 {
+  @apply mt-6 mb-3 text-lg text-header font-bold;
+}
+
+article.post .rich-content h6 {
+  @apply mt-6 mb-2 text-base text-header font-bold;
+}
+
+article.post .rich-content p {
+  @apply mb-5 text-lg font-medium;
+}
+
+article.post .rich-content a {
+  @apply text-link decoration-2 underline underline-offset-4 transition-colors hover:text-link-hover;
+}
+
+article.post .rich-content strong {
+  @apply font-bold;
+}
+
+article.post .rich-content em {
+  @apply italic;
+}
+
+article.post .rich-content code {
+  @apply font-mono px-1.5 py-1 rounded-md bg-surface border border-surface-border;
+}
+
+article.post .rich-content blockquote {
+  @apply my-8 rounded-r-2xl px-5 py-4 bg-surface border-l-6 border-surface-border;
+}
+
+article.post .rich-content hr {
+  @apply my-10 border-0 border-t border-surface-border;
+}
+
+article.post .rich-content img {
+  @apply rounded-2xl border border-surface-border;
+}
+
+/* lists */
+article.post .rich-content ul,
+article.post .rich-content ol {
+  @apply my-5 pl-7;
+}
+
+article.post .rich-content ul {
+  @apply list-disc;
+}
+
+article.post .rich-content ol {
+  @apply list-decimal;
+}
+
+article.post .rich-content li {
+  @apply mb-2 text-lg leading-8 text-text;
+}
+
+article.post .rich-content li > ul,
+article.post .rich-content li > ol {
+  @apply my-2;
+}
+
+article.post .rich-content li > p {
+  @apply mb-2;
 }
 
 @font-face {
@@ -63,6 +149,8 @@ html {
 	--text: #8d9db8;
 	--text-hover: #7a8da6;
 	--text-disabled: #4d5669;
+	--link: #7d9fe8;
+	--link-hover: #a0b7ee;
 }
 
 @theme {
@@ -75,6 +163,8 @@ html {
 	--color-text: var(--text);
 	--color-text-hover: var(--text-hover);
 	--color-text-disabled: var(--text-disabled);
+	--color-link: var(--link);
+	--color-link-hover: var(--link-hover);
 }
 
 body {

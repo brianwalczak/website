@@ -92,15 +92,17 @@ export default async function Blog({ params }: { params?: { slug?: string } }) {
 	if (!post) redirect(`/blog`);
 
 	return (
-		<article className="prose max-w-5xl mt-12 text-text">
-			<header className="mb-6">
-				<h1 className="title text-header">{post.title}</h1>
-				<div className="text-xl font-semibold text-header mb-2">
+		<article className="post">
+			<header className="header">
+				<h1 className="title">{post.title}</h1>
+				<div className="meta">
 					Published on {formatDate(post.createdAt)} <span className="font-bold mx-1">•</span> {calcReadTime(extractText(post.body))}
 				</div>
 			</header>
 
-			<RichTextConverter data={post.body as SerializedEditorState} />
+			<div className="rich-content">
+				<RichTextConverter data={post.body as SerializedEditorState} />
+			</div>
 		</article>
 	);
 }
