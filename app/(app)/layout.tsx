@@ -15,6 +15,7 @@ export default function RootLayout({
 			<head>
 				<meta charSet="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<link rel="icon" href="https://avatars.githubusercontent.com/u/72092838?v=4" type="image/png" />
 				<Analytics />
 			</head>
 			<body className="min-h-screen flex flex-col bg-backdrop text-text">
