@@ -71,21 +71,21 @@ function InviteModal({ onClose }: { onClose: () => void }) {
 	const isAtLimit = charsLeft === 0;
 
 	return (
-		<div className={`fixed inset-0 bg-zinc-950/80 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-${FADE_DURATION} ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`} onClick={handleClickAway}>
-			<div className={`bg-zinc-900 rounded-2xl shadow-lg max-w-[30rem] w-full mx-4 p-6 pb-4 border border-white/10 transition-all duration-${FADE_DURATION} ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}>
+		<div className={`fixed inset-0 bg-backdrop/80 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-${FADE_DURATION} ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`} onClick={handleClickAway}>
+			<div className={`bg-surface rounded-2xl shadow-lg max-w-[31rem] w-full mx-4 p-6 pb-4 border border-surface-border transition-all duration-${FADE_DURATION} ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}>
 				<div className="flex items-start justify-between mb-1">
 					<div className="flex items-center gap-3">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512" strokeWidth={2} stroke="currentColor" className="mx-1 size-6.5 text-zinc-100 shrink-0">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512" strokeWidth={2} stroke="currentColor" className="mx-1 size-6.5 text-header shrink-0">
 							<path d="M290.5 287.7L491.4 86.9 359 456.3 290.5 287.7zM457.4 53L256.6 253.8 88 185.3 457.4 53zM38.1 216.8l205.8 83.6 83.6 205.8c5.3 13.1 18.1 21.7 32.3 21.7 14.7 0 27.8-9.2 32.8-23.1L570.6 8c3.5-9.8 1-20.6-6.3-28s-18.2-9.8-28-6.3L39.4 151.7c-13.9 5-23.1 18.1-23.1 32.8 0 14.2 8.6 27 21.7 32.3z" />
 						</svg>
 
 						<div>
-							<h2 className="text-lg font-semibold text-zinc-100">Send to my Printer</h2>
-							<p className="text-zinc-500 text-sm leading-snug mt-0.5">Your message will print as a sticker label on my desk!</p>
+							<h2 className="text-lg font-semibold text-header">Send to my Printer</h2>
+							<p className="text-sm leading-snug mt-0.5">Your message will print as a sticker label on my desk!</p>
 						</div>
 					</div>
 
-					<button onClick={handleClose} className="cursor-pointer size-8 flex items-center justify-center rounded-lg border border-transparent hover:bg-zinc-800 hover:border-white/10 transition text-zinc-500 hover:text-zinc-200 shrink-0 ml-2">
+					<button onClick={handleClose} className="cursor-pointer size-8 flex items-center justify-center rounded-lg border border-transparent hover:bg-surface-hover hover:border-surface-border transition hover:text-header shrink-0 ml-2">
 						<svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
 							<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
 						</svg>
@@ -94,18 +94,18 @@ function InviteModal({ onClose }: { onClose: () => void }) {
 
 				<form onSubmit={handleSubmit} className="mt-5">
 					<div className="mb-4">
-						<label className="block text-sm font-medium text-zinc-400 mb-2">Message</label>
-						<input type="text" value={message} onChange={(e) => setMessage(e.target.value)} maxLength={MAX_PRINTER_CHARS} placeholder="Enter a message (something cool!)..." className="w-full px-4 py-2.5 bg-zinc-800 border border-white/10 rounded-xl focus:border-purple-500/50 outline-none transition text-zinc-100 placeholder-zinc-600" disabled={loading} required />
+						<label className="block text-sm font-medium mb-2">Message</label>
+						<input type="text" value={message} onChange={(e) => setMessage(e.target.value)} maxLength={MAX_PRINTER_CHARS} placeholder="Enter a message (something cool!)..." className="w-full px-4 py-2.5 font-normal bg-surface-hover border border-surface-border rounded-xl focus:border-purple-500/50 outline-none transition text-header placeholder-text-disabled" disabled={loading} required />
 
 						<div className="flex justify-end mt-1.5 mr-2">
-							<span className={`text-xs tabular-nums transition-colors duration-150 ${isAtLimit ? "text-red-400" : isNearLimit ? "text-amber-400" : "text-zinc-600"}`}>
+							<span className={`text-xs tabular-nums transition-colors duration-150 ${isAtLimit ? "text-red-400" : isNearLimit ? "text-amber-400" : ""}`}>
 								{charsLeft} / {MAX_PRINTER_CHARS}
 							</span>
 						</div>
 					</div>
 
 					<div className="flex items-center mb-3">
-						<button type="submit" className="flex-1 px-4 py-2.5 cursor-pointer bg-purple-700 hover:bg-purple-600 disabled:bg-zinc-800 disabled:text-zinc-500 border border-transparent disabled:border-white/10 text-white rounded-xl font-medium transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2" disabled={!message.trim() || loading}>
+						<button type="submit" className="flex-1 px-4 py-2.5 cursor-pointer bg-purple-700 hover:bg-purple-600 disabled:bg-surface-hover border border-transparent disabled:border-surface-border text-white rounded-xl font-medium transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2" disabled={!message.trim() || loading}>
 							{loading ? (
 								<>
 									{/* loading spinner! */}
@@ -124,7 +124,7 @@ function InviteModal({ onClose }: { onClose: () => void }) {
 						</button>
 					</div>
 
-					<p className="text-zinc-500 text-xs leading-relaxed text-center">Max {MAX_PRINTER_CHARS} characters. It can take around 30 seconds to print after submission!</p>
+					<p className="text-xs leading-relaxed text-center">Max {MAX_PRINTER_CHARS} characters. It can take around 30 seconds to print after submission!</p>
 				</form>
 			</div>
 		</div>
