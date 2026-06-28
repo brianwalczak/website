@@ -58,7 +58,7 @@ export default function Music() {
 	}, [spotify?.playing, spotify?.duration]);
 
 	return (
-		<section className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[min(90vw,50rem)] border border-surface-border bg-surface rounded-full p-2 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"}`}>
+		<section className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 w-[min(90vw,50rem)] border border-surface-border bg-surface rounded-full p-2 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"}`}>
 			{spotify && spotify.name && (
 				<div className="flex items-center gap-3">
 					{spotify.albumArtUrl && <Image src={spotify.albumArtUrl} alt="Album - Spotify" width={55} height={55} className="rounded-full" unoptimized />}
