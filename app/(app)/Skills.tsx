@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 // -- Icons -- //
 import React from "@/components/icons/React";
@@ -30,11 +30,11 @@ const FADE_DURATION = 200;
 export default function Skills() {
 	const [skillsTab, setSkillsTab] = useState("frontend");
 	const [phase, setPhase] = useState("idle");
-	const newTab = useRef("frontend");
+	const [newTab, setNewTab] = useState("frontend");
 
 	function switchTab(next: string) {
-		if (next === newTab.current) return;
-		newTab.current = next;
+		if (next === newTab) return;
+		setNewTab(next);
 
 		if (phase !== "exit") {
 			setPhase("exit");
@@ -46,16 +46,15 @@ export default function Skills() {
 
 		const timeout = setTimeout(() => {
 			if (phase === "exit") {
-				setSkillsTab(newTab.current);
+				setSkillsTab(newTab);
 				setPhase("enter");
 			} else if (phase === "enter") {
 				setPhase("idle");
 			}
-			
 		}, FADE_DURATION + 20);
 
 		return () => clearTimeout(timeout);
-	}, [phase]);
+	}, [phase, newTab]);
 
 	return (
 		<section className="mt-12 border-t-2 border-surface-border pt-10">
@@ -64,13 +63,13 @@ export default function Skills() {
 			<div className="flex justify-center sm:justify-start border-b border-surface-border gap-2 mb-6">
 				{" "}
 				{/* centered on mobile devices! */}
-				<button onClick={() => switchTab("frontend")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab.current === "frontend" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
+				<button onClick={() => switchTab("frontend")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab === "frontend" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
 					Frontend
 				</button>
-				<button onClick={() => switchTab("backend")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab.current === "backend" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
+				<button onClick={() => switchTab("backend")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab === "backend" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
 					Backend
 				</button>
-				<button onClick={() => switchTab("software")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab.current === "software" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
+				<button onClick={() => switchTab("software")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab === "software" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
 					Software
 				</button>
 			</div>
