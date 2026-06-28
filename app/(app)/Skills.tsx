@@ -40,13 +40,13 @@ export default function Skills() {
 			<div className="flex justify-center sm:justify-start border-b border-surface-border gap-2 mb-6">
 				{" "}
 				{/* centered on mobile devices! */}
-				<button onClick={() => switchTab("frontend")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${skillsTab === "frontend" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
+				<button onClick={() => switchTab("frontend")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab.current === "frontend" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
 					Frontend
 				</button>
-				<button onClick={() => switchTab("backend")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${skillsTab === "backend" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
+				<button onClick={() => switchTab("backend")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab.current === "backend" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
 					Backend
 				</button>
-				<button onClick={() => switchTab("software")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${skillsTab === "software" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
+				<button onClick={() => switchTab("software")} className={`text-[0.9375rem] px-4 py-2 transition border-b-2 cursor-pointer ${newTab.current === "software" ? "border-purple-400 text-purple-400" : "border-transparent text-text-hover hover:text-text"}`}>
 					Software
 				</button>
 			</div>
