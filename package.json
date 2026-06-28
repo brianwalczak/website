@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build && npx tsx ./node_modules/payload/bin.js migrate",
+		"build": "npx tsx ./node_modules/payload/bin.js migrate && next build",
 		"start": "next start",
 		"lint": "eslint",
 		"format": "prettier . --write",
