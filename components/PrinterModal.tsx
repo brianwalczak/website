@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { MAX_PRINTER_CHARS } from "@/lib/constants";
 const FADE_DURATION = 150;
 
-function InviteModal({ onClose }: { onClose: () => void }) {
+function PrinterModal({ onClose }: { onClose: () => void }) {
 	const [visible, setVisible] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [message, setMessage] = useState("");
@@ -131,4 +131,4 @@ function InviteModal({ onClose }: { onClose: () => void }) {
 	);
 }
 
-export default InviteModal;
+export default PrinterModal;
