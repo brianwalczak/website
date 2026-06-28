@@ -31,6 +31,7 @@ import AdobeIllustrator from "@/components/icons/AdobeIllustrator";
 
 export const HEADER_LINKS = [
 	{ label: "Home", url: "/" },
+	{ label: "Projects", url: "/projects" },
 	{ label: "Blog", url: "/blog" },
 	{ label: "Contact", url: "/contact" },
 ];
@@ -122,5 +123,5 @@ export const SKILLS_DATA = {
 		{ name: "VS Code", icon: <VSCode className="size-8 my-1 text-header" /> },
 		{ name: "Adobe Photoshop", icon: <AdobePhotoshop className="text-3xl mt-1" /> },
 		{ name: "Adobe Illustrator", icon: <AdobeIllustrator className="text-3xl mt-1" /> },
-	]
+	],
 };
