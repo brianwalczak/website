@@ -26,7 +26,7 @@ export default buildConfig({
 	},
 	collections: [Users, Posts, Media, Projects],
 	editor: lexicalEditor(),
-	secret: crypto.randomBytes(64).toString("hex"),
+	secret: process.env.PAYLOAD_SECRET || crypto.randomBytes(64).toString("hex"),
 	typescript: {
 		outputFile: path.resolve(dirname, "payload-types.ts"),
 	},
