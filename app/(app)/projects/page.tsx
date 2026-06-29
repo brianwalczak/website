@@ -42,7 +42,7 @@ export default async function Projects() {
 				<p className="text-base sm:text-lg max-w-4xl">A showcase of projects I&apos;ve worked on! Not everything I&apos;ve built, but the most significant ones.</p>
 			</div>
 
-			<section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+			<section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 				{projects?.docs?.map((project: Project) => {
 					const image = project.image as Media | null | undefined;
 					const tags = project.tags?.map((t) => t.tag) ?? [];
