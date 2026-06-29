@@ -25,13 +25,14 @@ export default buildConfig({
 	},
 	collections: [Users, Posts, Media, Projects],
 	editor: lexicalEditor(),
-	secret: process.env.PAYLOAD_SECRET || crypto.randomBytes(64).toString("hex"),
+	secret: crypto.randomBytes(64).toString("hex"),
 	typescript: {
 		outputFile: path.resolve(dirname, "payload-types.ts"),
 	},
 	db: sqliteAdapter({
 		client: {
-			url: process.env.DATABASE_URL || "",
+			url: process.env.TURSO_DATABASE_URL || process.env.DATABASE_URL || "",
+			authToken: process.env.TURSO_AUTH_TOKEN || undefined,
 		},
 	}),
 	sharp,
