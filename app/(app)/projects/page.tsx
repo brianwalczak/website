@@ -65,11 +65,11 @@ export default async function Projects() {
 
 							<div className="flex flex-col gap-2 p-4 flex-1">
 								<h2 className="text-lg font-bold text-header leading-snug">{project.name}</h2>
-								<p className="text-sm leading-relaxed flex-1">{project.description}</p>
+								<p className="text-base leading-relaxed flex-1">{project.description}</p>
 
 								<div className="flex flex-wrap gap-1.5">
 									{tags.map((tag) => (
-										<span key={tag} className="text-xs font-medium px-2 py-0.5 rounded-md bg-backdrop border border-surface-border">
+										<span key={tag} className="text-sm font-medium px-2 py-0.5 rounded-md bg-backdrop border border-surface-border">
 											{tag}
 										</span>
 									))}
