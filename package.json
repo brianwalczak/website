@@ -1,43 +1,47 @@
 {
 	"name": "brians-cabin",
 	"version": "1.0.0",
-	"private": true,
+	"type": "module",
 	"scripts": {
 		"dev": "next dev",
-		"build": "npx tsx ./node_modules/payload/bin.js migrate && next build",
+		"build": "payload migrate && next build",
 		"start": "next start",
 		"lint": "eslint",
 		"format": "prettier . --write",
 		"format:check": "prettier . --check"
 	},
 	"dependencies": {
-		"@payloadcms/db-sqlite": "^3.70.0",
-		"@payloadcms/next": "^3.70.0",
-		"@payloadcms/richtext-lexical": "^3.70.0",
-		"@payloadcms/storage-vercel-blob": "^3.70.0",
+		"@payloadcms/db-sqlite": "3.85.1",
+		"@payloadcms/next": "3.85.1",
+		"@payloadcms/richtext-lexical": "3.85.1",
+		"@payloadcms/storage-vercel-blob": "3.85.1",
 		"@upstash/ratelimit": "^2.0.8",
 		"@upstash/redis": "^1.38.0",
 		"@vercel/analytics": "^2.0.1",
-		"graphql": "^16.12.0",
-		"next": "16.1.1",
+		"graphql": "^16.8.1",
+		"next": "16.2.9",
 		"obscenity": "^0.4.6",
-		"payload": "^3.70.0",
-		"react": "19.2.3",
-		"react-dom": "19.2.3",
+		"payload": "3.85.1",
+		"react": "19.2.7",
+		"react-dom": "19.2.7",
 		"three": "^0.184.0"
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "^4",
 		"@types/node": "^20",
-		"@types/react": "^19",
-		"@types/react-dom": "^19",
+		"@types/react": "19.2.17",
+		"@types/react-dom": "19.2.3",
 		"@types/three": "^0.184.1",
 		"babel-plugin-react-compiler": "1.0.0",
 		"eslint": "^9",
-		"eslint-config-next": "16.1.1",
+		"eslint-config-next": "16.2.9",
 		"prettier": "^3.8.3",
 		"tailwindcss": "^4",
 		"tsx": "^4.21.0",
 		"typescript": "^5"
+	},
+	"overrides": {
+		"@types/react": "19.2.17",
+		"@types/react-dom": "19.2.3"
 	}
 }
