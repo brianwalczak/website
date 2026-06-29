@@ -92,10 +92,6 @@ article.post .rich-content hr {
 	@apply my-10 border-0 border-t border-surface-border;
 }
 
-article.post .rich-content img {
-	@apply rounded-2xl border border-surface-border;
-}
-
 /* lists */
 article.post .rich-content ul,
 article.post .rich-content ol {
