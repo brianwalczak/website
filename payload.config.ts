@@ -1,4 +1,5 @@
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
@@ -35,6 +36,21 @@ export default buildConfig({
 			authToken: process.env.TURSO_AUTH_TOKEN || undefined,
 		},
 	}),
+	email:
+		process.env.EMAIL_ENABLED === "true"
+			? nodemailerAdapter({
+					defaultFromAddress: process.env.EMAIL_FROM_ADDRESS || process.env.EMAIL_USERNAME || "",
+					defaultFromName: process.env.EMAIL_FROM_NAME || "Payload",
+					transportOptions: {
+						host: process.env.EMAIL_HOST,
+						port: Number(process.env.EMAIL_PORT) || 587,
+						auth: {
+							user: process.env.EMAIL_USERNAME,
+							pass: process.env.EMAIL_PASSWORD,
+						},
+					},
+				})
+			: undefined,
 	sharp,
 	plugins:
 		process.env.BLOB_READ_WRITE_TOKEN !== undefined
