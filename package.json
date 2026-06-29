@@ -24,21 +24,19 @@
 		"payload": "3.85.1",
 		"react": "19.2.7",
 		"react-dom": "19.2.7",
-		"three": "^0.184.0"
+		"three": "^0.185.0"
 	},
 	"devDependencies": {
-		"@tailwindcss/postcss": "^4",
-		"@types/node": "^20",
+		"@tailwindcss/postcss": "^4.3.1",
+		"@types/node": "^26.0.1",
 		"@types/react": "19.2.17",
 		"@types/react-dom": "19.2.3",
-		"@types/three": "^0.184.1",
+		"@types/three": "^0.185.0",
 		"babel-plugin-react-compiler": "1.0.0",
-		"eslint": "^9",
+		"eslint": "^10.6.0",
 		"eslint-config-next": "16.2.9",
-		"prettier": "^3.8.3",
-		"tailwindcss": "^4",
-		"tsx": "^4.21.0",
-		"typescript": "^5"
+		"prettier": "^3.9.1",
+		"tailwindcss": "^4.3.1"
 	},
 	"overrides": {
 		"@types/react": "19.2.17",
