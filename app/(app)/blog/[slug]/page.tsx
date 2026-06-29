@@ -1,23 +1,24 @@
+import { unstable_cache } from "next/cache";
 import { getPayload } from "payload";
 import config from "@payload-config";
 
 import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { RichText as RichTextConverter } from "@payloadcms/richtext-lexical/react";
 import { extractText, formatDate, calcReadTime } from "@/lib/utils";
+import { BLOG_POST_CACHE_SECONDS } from "@/lib/constants";
 import { redirect } from "next/navigation";
 
-export async function generateMetadata({ params }: { params: { slug?: string } }) {
-	try {
+export const dynamic = "force-dynamic";
+
+const getPost = unstable_cache(
+	async (slug: string) => {
 		const payload = await getPayload({ config });
-		const pathParams = params ? await params : {};
 
-		if (!pathParams || pathParams.slug === undefined) throw new Error();
-
-		const search = await payload.find({
+		return await payload.find({
 			collection: "posts",
 			where: {
 				slug: {
-					equals: pathParams.slug,
+					equals: slug,
 				},
 				visibility: {
 					not_equals: "private",
@@ -26,6 +27,18 @@ export async function generateMetadata({ params }: { params: { slug?: string } }
 			limit: 1,
 			pagination: false,
 		});
+	},
+	["post"],
+	{ revalidate: BLOG_POST_CACHE_SECONDS }
+);
+
+export async function generateMetadata({ params }: { params: { slug?: string } }) {
+	try {
+		const pathParams = params ? await params : {};
+
+		if (!pathParams || pathParams.slug === undefined) throw new Error();
+
+		const search = await getPost(pathParams.slug);
 
 		const post = search?.docs?.[0];
 		if (!post) throw new Error();
@@ -67,26 +80,13 @@ export async function generateMetadata({ params }: { params: { slug?: string } }
 }
 
 export default async function Blog({ params }: { params?: { slug?: string } }) {
-	const payload = await getPayload({ config });
 	const pathParams = params ? await params : {};
 
 	if (!pathParams || pathParams.slug === undefined) {
 		redirect(`/blog`);
 	}
 
-	const search = await payload.find({
-		collection: "posts",
-		where: {
-			slug: {
-				equals: pathParams.slug,
-			},
-			visibility: {
-				not_equals: "private",
-			},
-		},
-		limit: 1,
-		pagination: false,
-	});
+	const search = await getPost(pathParams.slug);
 
 	const post = search?.docs?.[0];
 	if (!post) redirect(`/blog`);

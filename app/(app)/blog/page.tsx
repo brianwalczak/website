@@ -1,11 +1,34 @@
+import { unstable_cache } from "next/cache";
 import { getPayload } from "payload";
 import config from "@payload-config";
 import Link from "next/link";
 
 import { extractText, formatDate, calcReadTime } from "@/lib/utils";
-import { POSTS_PER_PAGE } from "@/lib/constants";
+import { BLOG_POSTS_CACHE_SECONDS, POSTS_PER_PAGE } from "@/lib/constants";
 import { redirect } from "next/navigation";
 import type { Post } from "@/payload-types";
+
+export const dynamic = "force-dynamic";
+
+const getPosts = unstable_cache(
+	async (pageNumber: number) => {
+		const payload = await getPayload({ config });
+
+		return await payload.find({
+			collection: "posts",
+			where: {
+				visibility: {
+					equals: "public",
+				},
+			},
+			limit: POSTS_PER_PAGE,
+			page: pageNumber,
+			sort: "-createdAt",
+		});
+	},
+	["posts"],
+	{ revalidate: BLOG_POSTS_CACHE_SECONDS },
+);
 
 export const metadata = {
 	title: "Blog - Brian Walczak",
@@ -31,7 +54,6 @@ export const metadata = {
 };
 
 export default async function Blog({ searchParams }: { searchParams?: { p?: string } }) {
-	const payload = await getPayload({ config });
 	const params = searchParams ? await searchParams : {};
 
 	let page = 1;
@@ -41,19 +63,9 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 		if (!isNaN(parsed) && parsed > 0) page = parsed;
 	}
 
-	const posts = await payload.find({
-		collection: "posts",
-		where: {
-			visibility: {
-				equals: "public",
-			},
-		},
-		limit: POSTS_PER_PAGE,
-		page: page,
-		sort: "-createdAt",
-	});
-
+	const posts = await getPosts(page);
 	const totalPages = Math.max(1, Math.ceil((posts?.totalDocs || 0) / POSTS_PER_PAGE));
+
 	if (page > totalPages) {
 		redirect(`/blog?p=${totalPages}`);
 	}

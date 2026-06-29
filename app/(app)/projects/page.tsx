@@ -1,8 +1,25 @@
+import { unstable_cache } from "next/cache";
 import { getPayload } from "payload";
 import config from "@payload-config";
 import Image from "next/image";
 
 import type { Project, Media } from "@/payload-types";
+import { PROJECTS_CACHE_SECONDS } from "@/lib/constants";
+
+export const dynamic = "force-dynamic";
+
+const getProjects = unstable_cache(
+	async () => {
+		const payload = await getPayload({ config });
+
+		return await payload.find({
+			collection: "projects",
+			sort: "order,-createdAt",
+		});
+	},
+	["projects"],
+	{ revalidate: PROJECTS_CACHE_SECONDS },
+);
 
 export const metadata = {
 	title: "Projects - Brian Walczak",
@@ -28,12 +45,7 @@ export const metadata = {
 };
 
 export default async function Projects() {
-	const payload = await getPayload({ config });
-
-	const projects = await payload.find({
-		collection: "projects",
-		sort: "order,-createdAt",
-	});
+	const projects = await getProjects();
 
 	return (
 		<div className="max-w-5xl mt-20">
