@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 import Bars from "@/components/icons/Bars";
+import X from "@/components/icons/X";
 
 export default function Header() {
 	const pathname = usePathname();
@@ -49,7 +50,7 @@ export default function Header() {
 			{/* nav button for mobile */}
 			<button className="sm:hidden relative flex justify-center items-center w-8 h-8 z-55" onClick={() => setMenuOpen((prev) => !prev)}>
 				<Bars className={`size-6 transition-opacity duration-200 ${menuOpen ? "opacity-0" : "opacity-100"}`} />
-				<span className={`text-xl font-bold absolute transition-opacity duration-200 ${menuOpen ? "opacity-100" : "opacity-0"}`}>✕</span>
+				<X className={`absolute size-6 transition-opacity duration-200 ${menuOpen ? "opacity-100" : "opacity-0"}`} />
 			</button>
 
 			{/* nav drawer for mobile */}
