@@ -4,6 +4,7 @@ import { HEADER_LINKS } from "@/lib/constants";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+
 import Bars from "@/components/icons/Bars";
 
 export default function Header() {

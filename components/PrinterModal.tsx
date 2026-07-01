@@ -1,5 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { MAX_PRINTER_CHARS } from "@/lib/constants";
+
+import PaperAirplane from "@/components/icons/PaperAirplane";
+import Printer from "@/components/icons/Printer";
+import X from "@/components/icons/X";
+
 const FADE_DURATION = 150;
 
 function PrinterModal({ onClose }: { onClose: () => void }) {
@@ -75,9 +80,7 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 			<div className={`bg-surface rounded-2xl shadow-lg max-w-[31rem] w-full mx-4 p-6 pb-4 border border-surface-border transition-all duration-${FADE_DURATION} ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}>
 				<div className="flex items-start justify-between mb-1">
 					<div className="flex items-center gap-3">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512" strokeWidth={2} stroke="currentColor" className="mx-1 size-6.5 text-header shrink-0">
-							<path d="M290.5 287.7L491.4 86.9 359 456.3 290.5 287.7zM457.4 53L256.6 253.8 88 185.3 457.4 53zM38.1 216.8l205.8 83.6 83.6 205.8c5.3 13.1 18.1 21.7 32.3 21.7 14.7 0 27.8-9.2 32.8-23.1L570.6 8c3.5-9.8 1-20.6-6.3-28s-18.2-9.8-28-6.3L39.4 151.7c-13.9 5-23.1 18.1-23.1 32.8 0 14.2 8.6 27 21.7 32.3z" />
-						</svg>
+						<PaperAirplane className="mx-1 size-6.5 text-header shrink-0" />
 
 						<div>
 							<h2 className="text-lg font-semibold text-header">Send to my Printer</h2>
@@ -86,9 +89,7 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 					</div>
 
 					<button onClick={handleClose} className="cursor-pointer size-8 flex items-center justify-center rounded-lg border border-transparent hover:bg-surface-hover hover:border-surface-border transition hover:text-header shrink-0 ml-2">
-						<svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-							<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-						</svg>
+						<X className="size-4" />
 					</button>
 				</div>
 
@@ -115,9 +116,7 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 							) : (
 								<>
 									{/* printer icon! */}
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="size-4.5 mr-[-2px]">
-										<path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
-									</svg>
+									<Printer className="size-4.5 mr-[-2px]" strokeWidth={2.5} />
 									Print it!
 								</>
 							)}

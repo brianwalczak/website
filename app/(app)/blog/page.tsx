@@ -8,6 +8,9 @@ import { BLOG_POSTS_CACHE_SECONDS, POSTS_PER_PAGE } from "@/lib/constants";
 import { redirect } from "next/navigation";
 import type { Post } from "@/payload-types";
 
+import AngleLeft from "@/components/icons/AngleLeft";
+import AngleRight from "@/components/icons/AngleRight";
+
 export const dynamic = "force-dynamic";
 
 const getPosts = unstable_cache(
@@ -99,10 +102,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 				<div>
 					<Link href={`/blog?p=${Math.max(1, page - 1)}`} className={`${page > 1 ? "hover:text-text-hover transition-colors" : "text-text-disabled pointer-events-none"}`} aria-disabled={page <= 1}>
 						<span className="flex items-center justify-center font-semibold">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-3.5 mr-1">
-								<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-							</svg>
-
+							<AngleLeft className="size-3.5 mr-1" />
 							<span>Previous</span>
 						</span>
 					</Link>
@@ -116,10 +116,7 @@ export default async function Blog({ searchParams }: { searchParams?: { p?: stri
 					<Link href={`/blog?p=${Math.min(totalPages, page + 1)}`} className={`${page < totalPages ? "hover:text-text-hover transition-colors" : "text-text-disabled pointer-events-none"}`} aria-disabled={page >= totalPages}>
 						<span className="flex items-center justify-center font-semibold">
 							<span>Next</span>
-
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="size-3.5 ml-1">
-								<path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-							</svg>
+							<AngleRight className="size-3.5 ml-1" />
 						</span>
 					</Link>
 				</div>

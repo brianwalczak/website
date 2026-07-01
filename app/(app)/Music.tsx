@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { MusicData } from "@/lib/types";
 import Image from "next/image";
 
+import X from "@/components/icons/X";
+
 export default function Music() {
 	const [spotify, setSpotify] = useState<MusicData | null>(null);
 
@@ -94,10 +96,7 @@ export default function Music() {
 					</div>
 
 					<button onClick={() => setIsVisible(false)} className="bg-surface-border hover:bg-surface-border-hover hover:text-header transition-colors rounded-full p-1 cursor-pointer mr-2">
-						<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-							<line x1="18" y1="6" x2="6" y2="18"></line>
-							<line x1="6" y1="6" x2="18" y2="18"></line>
-						</svg>
+						<X className="size-3" />
 					</button>
 				</div>
 			)}
