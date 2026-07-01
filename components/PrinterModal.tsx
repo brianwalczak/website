@@ -71,7 +71,7 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 	const isAtLimit = charsLeft === 0;
 
 	return (
-		<div className={`fixed inset-0 bg-backdrop/80 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-${FADE_DURATION} ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`} onClick={handleClickAway}>
+		<div className={`fixed inset-0 bg-backdrop/80 backdrop-blur-sm flex items-center justify-center z-60 transition-opacity duration-${FADE_DURATION} ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`} onClick={handleClickAway}>
 			<div className={`bg-surface rounded-2xl shadow-lg max-w-[31rem] w-full mx-4 p-6 pb-4 border border-surface-border transition-all duration-${FADE_DURATION} ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}>
 				<div className="flex items-start justify-between mb-1">
 					<div className="flex items-center gap-3">
