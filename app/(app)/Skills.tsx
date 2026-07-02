@@ -35,7 +35,7 @@ export default function Skills() {
 	}, [phase, newTab]);
 
 	return (
-		<section className="mt-12 border-t-2 border-surface-border pt-10">
+		<section className="mt-12">
 			<h2 className="text-header text-2xl font-bold mb-6">Skills</h2>
 
 			<div className="flex justify-center sm:justify-start border-b border-surface-border gap-2 mb-6">

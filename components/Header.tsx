@@ -28,7 +28,7 @@ export default function Header() {
 
 	return (
 		<header className="flex items-center justify-between relative">
-			<span className="mono text-sm text-header">
+			<span className="mono text-base sm:text-sm text-header">
 				<Link className="hover:text-purple-400 transition-all duration-200" href="/">
 					Brian&apos;s Cabin
 				</Link>

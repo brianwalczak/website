@@ -1,4 +1,5 @@
 import QuickInfo from "./QuickInfo";
+import FeaturedProjects from "./FeaturedProjects";
 import PrinterSection from "./PrinterSection";
 import Skills from "./Skills";
 import Music from "./Music";
@@ -58,10 +59,10 @@ export default function Home() {
 				</div>
 			</section>
 
-			<Music />
+			<FeaturedProjects />
 			<Skills />
 
-			<section className="mt-32 mb-16 text-center">
+			<section className="mt-24 mb-4 text-center">
 				<h2 className="text-3xl sm:text-4xl font-extrabold text-header mb-6">Proud member of Hack Club. ❤️</h2>
 				<p className="text-base sm:text-lg font-bold mb-8">I&apos;m fortunate enough to be a member of Hack Club, a nonprofit organization with an amazing community of teen hackers and creators. Some of my projects were funded by Hack Club, and they wouldn&apos;t be made possible without them!</p>
 				<p className="text-base sm:text-lg font-bold">
@@ -72,6 +73,7 @@ export default function Home() {
 					!
 				</p>
 			</section>
+			<Music />
 		</>
 	);
 }
