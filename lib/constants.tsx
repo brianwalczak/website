@@ -4,7 +4,7 @@ export const MAX_PRINTER_CHARS = 65;
 
 export const PROJECTS_CACHE_SECONDS = 300;
 export const BLOG_POSTS_CACHE_SECONDS = 300;
-export const BLOG_POST_CACHE_SECONDS = 300; 
+export const BLOG_POST_CACHE_SECONDS = 300;
 
 // -- Icons -- //
 import Email from "@/components/icons/Email";

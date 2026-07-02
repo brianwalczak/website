@@ -23,7 +23,9 @@ export default function Header() {
 	// Prevent scrolling when the menu is open
 	useEffect(() => {
 		document.body.style.overflow = menuOpen ? "hidden" : "";
-		return () => { document.body.style.overflow = ""; };
+		return () => {
+			document.body.style.overflow = "";
+		};
 	}, [menuOpen]);
 
 	return (
@@ -54,7 +56,12 @@ export default function Header() {
 			</button>
 
 			{/* nav drawer for mobile */}
-			<div className={`fixed inset-0 bg-backdrop/80 backdrop-blur-sm z-50 sm:hidden transition-opacity duration-300 ${menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`} onClick={(e) => { if (e.target === e.currentTarget) setMenuOpen(false); }}>
+			<div
+				className={`fixed inset-0 bg-backdrop/80 backdrop-blur-sm z-50 sm:hidden transition-opacity duration-300 ${menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+				onClick={(e) => {
+					if (e.target === e.currentTarget) setMenuOpen(false);
+				}}
+			>
 				<nav className={`fixed flex flex-col top-0 right-0 h-full w-64 pt-24 px-8 gap-6 text-lg bg-surface border-l border-surface-border shadow-2xl transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
 					{HEADER_LINKS.map((page) => (
 						<Link key={page.url} href={page.url} className={isActive(page.url) ? "text-zinc-200" : "hover:text-text-hover transition"} onClick={() => setMenuOpen(false)}>

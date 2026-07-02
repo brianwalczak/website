@@ -3,7 +3,7 @@
 import { useState } from "react";
 import PrinterModal from "@/components/PrinterModal";
 
-import Printer from "@/components/icons/Printer"
+import Printer from "@/components/icons/Printer";
 import ArrowRight from "@/components/icons/ArrowRight";
 
 export default function PrinterSection() {

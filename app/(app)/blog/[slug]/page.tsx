@@ -1,36 +1,10 @@
-import { unstable_cache } from "next/cache";
-import { getPayload } from "payload";
-import config from "@payload-config";
-
 import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { RichText as RichTextConverter } from "@payloadcms/richtext-lexical/react";
 import { extractText, formatDate, calcReadTime } from "@/lib/utils";
-import { BLOG_POST_CACHE_SECONDS } from "@/lib/constants";
 import { redirect } from "next/navigation";
+import { getPost } from "@/lib/blog";
 
 export const dynamic = "force-dynamic";
-
-const getPost = unstable_cache(
-	async (slug: string) => {
-		const payload = await getPayload({ config });
-
-		return await payload.find({
-			collection: "posts",
-			where: {
-				slug: {
-					equals: slug,
-				},
-				visibility: {
-					not_equals: "private",
-				},
-			},
-			limit: 1,
-			pagination: false,
-		});
-	},
-	["post"],
-	{ revalidate: BLOG_POST_CACHE_SECONDS }
-);
 
 export async function generateMetadata({ params }: { params: { slug?: string } }) {
 	try {
