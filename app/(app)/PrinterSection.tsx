@@ -19,7 +19,7 @@ export default function PrinterSection() {
 
 							<div className="min-w-0">
 								<h2 className="text-purple-400 text-[0.9375rem] sm:text-base mb-0.5">My Printer</h2>
-								<p className="group-hover:text-text-hover text-sm sm:text-[0.9375rem] transition-colors duration-200">Send me a message and it&apos;ll physically print as a sticker on my desk!</p>
+								<p className="text-sm sm:text-[0.9375rem] transition-colors duration-200">Send me a message and it&apos;ll physically print as a sticker on my desk!</p>
 							</div>
 						</div>
 

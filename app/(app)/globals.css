@@ -9,6 +9,8 @@ html {
 
 article.post {
 	@apply max-w-5xl mt-16;
+	min-width: 0;
+	overflow-x: hidden;
 }
 
 article.post .header {
@@ -21,6 +23,12 @@ article.post .header .title {
 
 article.post .header .meta {
 	@apply mt-4 text-base sm:text-lg font-semibold;
+}
+
+article.post .rich-content {
+	min-width: 0;
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 
 article.post .rich-content ::selection {
@@ -82,6 +90,24 @@ article.post .rich-content em {
 
 article.post .rich-content code {
 	@apply font-mono text-sm px-1 py-0.5 rounded-md bg-surface border border-surface-border;
+}
+
+article.post .rich-content pre {
+	@apply font-mono text-sm my-5 p-4 rounded-xl bg-surface border border-surface-border;
+	max-width: 100%;
+	overflow-x: auto;
+	overflow-y: visible;
+	white-space: pre;
+	overflow-wrap: normal;
+	word-break: normal;
+}
+
+article.post .rich-content pre code {
+	padding: 0;
+	border: none;
+	background: transparent;
+	overflow-wrap: normal;
+	word-break: normal;
 }
 
 article.post .rich-content blockquote {

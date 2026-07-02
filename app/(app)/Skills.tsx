@@ -61,7 +61,7 @@ export default function Skills() {
 				}}
 			>
 				{SKILLS_DATA[skillsTab as keyof typeof SKILLS_DATA]?.map((skill) => (
-					<div key={skill.name} className="flex flex-col items-center gap-3 p-4 border border-surface-border bg-surface rounded-xl hover:border-surface-border-hover transition">
+					<div key={skill.name} className="flex flex-col items-center gap-3 p-4 border border-surface-border bg-surface rounded-xl hover:border-purple-500/70 transition select-none cursor-default">
 						{skill.icon}
 						<span className="text-sm text-center whitespace-nowrap">{skill.name}</span>
 					</div>

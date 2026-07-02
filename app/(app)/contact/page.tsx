@@ -27,9 +27,9 @@ export const metadata = {
 export default async function Contact() {
 	return (
 		<div className="max-w-5xl space-y-6 mt-20">
-			<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-2">
+			<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">
 				<h1 className="text-header text-3xl sm:text-4xl font-semibold">Contact me</h1>
-				<p>Feel free to contact me through any of the options below.</p>
+				<p className="text-base sm:text-lg">Feel free to contact me through any of the options below.</p>
 			</div>
 
 			<section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

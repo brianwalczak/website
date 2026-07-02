@@ -11,7 +11,7 @@ type Props = {
 
 export default function ContactCard({ label, value, url, icon }: Props) {
 	return (
-		<a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center border border-surface-border bg-surface hover:bg-surface-hover rounded-xl p-6 gap-4 transition">
+		<a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center border border-surface-border bg-surface hover:bg-surface-hover hover:border-surface-border-hover rounded-xl p-6 gap-4 transition group">
 			{icon && <div className="text-purple-400">{icon}</div>}
 
 			<div className="flex-1">
@@ -19,7 +19,7 @@ export default function ContactCard({ label, value, url, icon }: Props) {
 				<div className="text-sm truncate">{value ? value : url.replace("https://", "").replace("www.", "")}</div>
 			</div>
 
-			<UpRightFromSquare className="size-3.5" />
+			<UpRightFromSquare className="size-3.5 text-text-hover group-hover:text-text transition" />
 		</a>
 	);
 }

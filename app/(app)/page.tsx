@@ -67,7 +67,7 @@ export default function Home() {
 				<p className="text-base sm:text-lg font-bold mb-8">I&apos;m fortunate enough to be a member of Hack Club, a nonprofit organization with an amazing community of teen hackers and creators. Some of my projects were funded by Hack Club, and they wouldn&apos;t be made possible without them!</p>
 				<p className="text-base sm:text-lg font-bold">
 					If you&apos;re a teen who&apos;s interested in coding, hardware, robotics, or just hacking, consider{" "}
-					<a href="https://hackclub.com/slack" target="_blank" rel="noopener noreferrer" className="underline">
+					<a href="https://hackclub.com/" target="_blank" rel="noopener noreferrer" className="underline text-link hover:text-link-hover transition-colors">
 						joining us here
 					</a>
 					!
