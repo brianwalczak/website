@@ -10,15 +10,12 @@ import X from "@/components/icons/X";
 
 export default function Header() {
 	const pathname = usePathname();
-	const isActive = (href: string) => pathname === href;
 	const [menuOpen, setMenuOpen] = useState(false);
-	const [lastPathname, setLastPathname] = useState(pathname);
 
 	// Close the menu when the page changes
-	if (pathname !== lastPathname) {
-		setLastPathname(pathname);
+	useEffect(() => {
 		setMenuOpen(false);
-	}
+	}, [pathname]);
 
 	// Prevent scrolling when the menu is open
 	useEffect(() => {
@@ -43,7 +40,7 @@ export default function Header() {
 			{/* nav links for desktop */}
 			<nav className="hidden sm:flex gap-10 text-base">
 				{HEADER_LINKS.map((page) => (
-					<Link key={page.url} href={page.url} className={isActive(page.url) ? "text-zinc-200" : "hover:text-text-hover transition"}>
+					<Link key={page.url} href={page.url} className={pathname === page.url ? "text-zinc-200" : "hover:text-text-hover transition"}>
 						{page.label}
 					</Link>
 				))}
@@ -64,7 +61,7 @@ export default function Header() {
 			>
 				<nav className={`fixed flex flex-col top-0 right-0 h-full w-64 pt-24 px-8 gap-6 text-lg bg-surface border-l border-surface-border shadow-2xl transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
 					{HEADER_LINKS.map((page) => (
-						<Link key={page.url} href={page.url} className={isActive(page.url) ? "text-zinc-200" : "hover:text-text-hover transition"} onClick={() => setMenuOpen(false)}>
+						<Link key={page.url} href={page.url} className={pathname === page.url ? "text-zinc-200" : "hover:text-text-hover transition"} onClick={() => setMenuOpen(false)}>
 							{page.label}
 						</Link>
 					))}
