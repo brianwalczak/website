@@ -16,6 +16,8 @@ export default function RootLayout({
 				<meta charSet="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="https://avatars.githubusercontent.com/u/72092838?v=4" type="image/png" />
+				<link rel="preload" href="/fonts/Rubik.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+				<link rel="preload" href="/fonts/JetBrainsMono.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
 				<Analytics />
 			</head>
 			<body className="min-h-screen flex flex-col bg-backdrop text-text">
