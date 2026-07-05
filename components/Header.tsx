@@ -1,15 +1,18 @@
 "use client";
 
 import { HEADER_LINKS } from "@/lib/constants";
-import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 import Bars from "@/components/icons/Bars";
 import X from "@/components/icons/X";
 
+const NAV_DURATION = 300;
+
 export default function Header() {
 	const pathname = usePathname();
+	const router = useRouter();
 	const [activePath, setActivePath] = useState<string | null>(null);
 	const [menuOpen, setMenuOpen] = useState(false);
 
@@ -26,6 +29,19 @@ export default function Header() {
 			document.body.style.overflow = "";
 		};
 	}, [menuOpen]);
+
+	// Close the drawer and only navigate after the animation is done
+	const goToMobile = useCallback(
+		(e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+			e.preventDefault();
+			setMenuOpen(false);
+
+			setTimeout(() => {
+				router.push(url);
+			}, NAV_DURATION);
+		},
+		[router],
+	);
 
 	return (
 		<header className="flex items-center justify-between relative">
@@ -56,14 +72,14 @@ export default function Header() {
 
 			{/* nav drawer for mobile */}
 			<div
-				className={`fixed inset-0 bg-backdrop/80 backdrop-blur-sm z-50 sm:hidden transition-opacity duration-300 ${menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+				className={`fixed inset-0 bg-backdrop/80 backdrop-blur-sm z-50 sm:hidden transition-opacity duration-${NAV_DURATION} ${menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
 				onClick={(e) => {
 					if (e.target === e.currentTarget) setMenuOpen(false);
 				}}
 			>
-				<nav className={`fixed flex flex-col top-0 right-0 h-full w-64 pt-24 px-8 gap-6 text-lg bg-surface border-l border-surface-border shadow-2xl transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+				<nav className={`fixed flex flex-col top-0 right-0 h-full w-64 pt-24 px-8 gap-6 text-lg bg-surface border-l border-surface-border shadow-2xl transition-transform duration-${NAV_DURATION} ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
 					{HEADER_LINKS.map((page) => (
-						<Link key={page.url} href={page.url} className={activePath === page.url ? "text-zinc-200" : "hover:text-text-hover transition"} onClick={() => setMenuOpen(false)}>
+						<Link key={page.url} href={page.url} className={activePath === page.url ? "text-zinc-200" : "hover:text-text-hover transition"} onClick={(e) => goToMobile(e, page.url)}>
 							{page.label}
 						</Link>
 					))}
