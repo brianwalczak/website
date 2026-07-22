@@ -1,7 +1,7 @@
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { lexicalEditor, LinkFeature } from "@payloadcms/richtext-lexical";
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
@@ -25,7 +25,12 @@ export default buildConfig({
 		},
 	},
 	collections: [Users, Posts, Media, Projects],
-	editor: lexicalEditor(),
+	editor: lexicalEditor({
+		features: ({ defaultFeatures }) => [
+			...defaultFeatures.filter((feature) => feature.key !== "link"),
+			LinkFeature({ disableAutoLinks: true }),
+		],
+	}),
 	secret: process.env.PAYLOAD_SECRET || crypto.randomBytes(64).toString("hex"),
 	typescript: {
 		outputFile: path.resolve(dirname, "payload-types.ts"),
