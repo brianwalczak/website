@@ -89,7 +89,7 @@ article.post .rich-content em {
 }
 
 article.post .rich-content code {
-	@apply font-mono text-sm px-1 py-0.5 rounded-md bg-surface border border-surface-border;
+	@apply font-mono text-sm px-1 pt-[0.2rem] pb-[0.04rem] rounded-md bg-surface border border-surface-border;
 }
 
 article.post .rich-content pre {
