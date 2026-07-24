@@ -110,6 +110,22 @@ article.post .rich-content pre code {
 	word-break: normal;
 }
 
+article.post .rich-content .code-block {
+	@apply my-5 rounded-xl bg-surface border border-surface-border overflow-hidden;
+}
+
+article.post .rich-content .code-block header {
+	@apply flex items-center justify-between px-4 pt-2 pb-1.5 text-xs font-mono uppercase text-text border-b border-surface-border;
+}
+
+article.post .rich-content .code-block button.copy {
+	@apply text-text hover:text-text-hover transition-colors cursor-pointer;
+}
+
+article.post .rich-content .code-block pre {
+	@apply my-0 rounded-none border-0 bg-transparent;
+}
+
 article.post .rich-content blockquote {
 	@apply my-8 rounded-r-2xl px-5 py-4 bg-surface border-l-6 border-surface-border;
 }

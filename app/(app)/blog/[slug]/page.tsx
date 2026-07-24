@@ -1,6 +1,7 @@
 import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { RichText as RichTextConverter } from "@payloadcms/richtext-lexical/react";
 import { extractText, formatDate, calcReadTime } from "@/lib/utils";
+import { richTextConverters } from "@/components/RichTextConverters";
 import { redirect } from "next/navigation";
 import { getPost } from "@/lib/blog";
 
@@ -75,7 +76,7 @@ export default async function Blog({ params }: { params?: { slug?: string } }) {
 			</header>
 
 			<div className="rich-content">
-				<RichTextConverter data={post.body as SerializedEditorState} />
+				<RichTextConverter data={post.body as SerializedEditorState} converters={richTextConverters} />
 			</div>
 		</article>
 	);

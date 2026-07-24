@@ -1,7 +1,8 @@
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
-import { lexicalEditor, LinkFeature } from "@payloadcms/richtext-lexical";
+import { lexicalEditor, LinkFeature, BlocksFeature, CodeBlock } from "@payloadcms/richtext-lexical";
+import { defaultLanguages } from "@/lib/codeLanguages";
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
@@ -29,6 +30,9 @@ export default buildConfig({
 		features: ({ defaultFeatures }) => [
 			...defaultFeatures.filter((feature) => feature.key !== "link"),
 			LinkFeature({ disableAutoLinks: true }),
+			BlocksFeature({
+				blocks: [CodeBlock({ languages: defaultLanguages, defaultLanguage: "plaintext" })],
+			}),
 		],
 	}),
 	secret: process.env.PAYLOAD_SECRET || crypto.randomBytes(64).toString("hex"),
