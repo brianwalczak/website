@@ -3,7 +3,7 @@ import { codeToHtml } from "shiki";
 import CopyButton from "./CopyButton";
 
 export default async function CodeBlock({ code, language }: { code: string; language?: string | null }) {
-	const label = (language && defaultLanguages[language]) || defaultLanguages.plaintext;
+	const label = (language && defaultLanguages[language as keyof typeof defaultLanguages]) || defaultLanguages.plaintext;
 	const html = await codeToHtml(code, { lang: toShikiLang(language), theme: "github-dark-default" });
 
 	return (
