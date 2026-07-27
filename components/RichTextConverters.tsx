@@ -1,5 +1,5 @@
 import type { JSXConverterArgs, JSXConvertersFunction } from "@payloadcms/richtext-lexical/react";
-import CodeBlock from "./CodeBlock";
+import CodeBlock from "./blocks/CodeBlock";
 
 type CodeBlockNode = {
 	type: "block";

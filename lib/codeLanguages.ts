@@ -1,6 +1,7 @@
-/**
- * Source: https://github.com/microsoft/monaco-editor/tree/main/src/basic-languages
- */ export const defaultLanguages = {
+import type { BundledLanguage } from "shiki";
+
+// Source: https://github.com/microsoft/monaco-editor/tree/main/src/basic-languages
+export const defaultLanguages = {
 	abap: "ABAP",
 	apex: "Apex",
 	azcli: "Azure CLI",
@@ -84,3 +85,34 @@
 	xml: "XML",
 	yaml: "YAML",
 };
+
+// we have to (annoyingly) convert some monaco languages to shiki
+const monacoToShiki: Record<string, BundledLanguage | "plaintext"> = {
+	azcli: "plaintext",
+	cameligo: "plaintext",
+	csp: "plaintext",
+	ecl: "plaintext",
+	flow9: "plaintext",
+	freemarker2: "ftl",
+	lexon: "plaintext",
+	m3: "plaintext",
+	msdax: "dax",
+	mysql: "sql",
+	pascaligo: "plaintext",
+	pgsql: "sql",
+	pla: "plaintext",
+	postiats: "plaintext",
+	qsharp: "plaintext",
+	redis: "plaintext",
+	redshift: "sql",
+	restructuredtext: "rst",
+	sb: "plaintext",
+	sophia: "plaintext",
+	st: "plaintext",
+	systemverilog: "system-verilog",
+};
+
+export function toShikiLang(language?: string | null): BundledLanguage | "plaintext" {
+	if (!language) return "plaintext";
+	return monacoToShiki[language] ?? (language as BundledLanguage);
+}
