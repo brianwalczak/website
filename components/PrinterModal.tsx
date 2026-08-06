@@ -11,6 +11,7 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 	const [visible, setVisible] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [message, setMessage] = useState("");
+	const [status, setStatus] = useState<{ type: "success" | "error" | "pending"; text: string } | null>(null);
 
 	const handleClose = useCallback(() => {
 		setVisible(false);
@@ -46,6 +47,7 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 		async (e: React.FormEvent<HTMLFormElement>) => {
 			e.preventDefault();
 			setLoading(true);
+			setStatus({ type: "pending", text: "Your message is on its way to the printer. Just a moment!" });
 
 			try {
 				const req = await fetch("/api/print", {
@@ -57,18 +59,18 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 				const res = await req.json();
 
 				if (!res.success || res.error) {
-					alert(res.error || "An error occurred while sending your message to the printer.");
+					setStatus({ type: "error", text: res.error || "An error occurred while sending your message to the printer." });
 				} else {
-					alert("Your message has been sent to the printer! It should print within around 30 seconds (or whenever my computer is turned on).");
+					setStatus({ type: "success", text: "Sent! Your message will print within ~30s (whenever my computer's on)." });
+					setMessage("");
 				}
 			} catch {
-				alert("An unknown error occurred while sending your message to the printer.");
+				setStatus({ type: "error", text: "An unknown error occurred while sending your message to the printer." });
 			} finally {
 				setLoading(false);
-				handleClose();
 			}
 		},
-		[message, handleClose],
+		[message],
 	);
 
 	const charsLeft = MAX_PRINTER_CHARS - message.length;
@@ -96,7 +98,7 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 				<form onSubmit={handleSubmit} className="mt-5">
 					<div className="mb-4">
 						<label className="block text-sm font-medium mb-2">Message</label>
-						<input type="text" value={message} onChange={(e) => setMessage(e.target.value)} maxLength={MAX_PRINTER_CHARS} placeholder="Enter a message (something cool!)..." className="w-full px-4 py-2.5 font-normal bg-surface-hover border border-surface-border rounded-xl focus:border-purple-500/50 outline-none transition text-header placeholder-text-disabled" disabled={loading} required />
+						<input type="text" value={message} onChange={(e) => { setMessage(e.target.value); setStatus(null); }} maxLength={MAX_PRINTER_CHARS} placeholder="Enter a message (something cool!)..." className="w-full px-4 py-2.5 font-normal bg-surface-hover border border-surface-border rounded-xl focus:border-purple-500/50 outline-none transition text-header placeholder-text-disabled" disabled={loading} required />
 
 						<div className="flex justify-end mt-1.5 mr-2">
 							<span className={`text-xs tabular-nums transition-colors duration-150 ${isAtLimit ? "text-red-400" : isNearLimit ? "text-amber-400" : ""}`}>
@@ -123,7 +125,7 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 						</button>
 					</div>
 
-					<p className="text-xs leading-relaxed text-center">Max {MAX_PRINTER_CHARS} characters. It can take around 30 seconds to print after submission!</p>
+					{status ? <p className={`text-xs leading-relaxed text-center ${status.type === "success" ? "text-green-500" : status.type === "error" ? "text-red-400" : ""}`}>{status.text}</p> : <p className="text-xs leading-relaxed text-center">Max {MAX_PRINTER_CHARS} characters. It can take around 30 seconds to print after submission!</p>}
 				</form>
 			</div>
 		</div>
