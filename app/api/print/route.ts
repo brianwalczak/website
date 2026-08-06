@@ -29,7 +29,9 @@ export async function POST(req: NextRequest) {
 	}
 
 	// Check if the IP address is manually blocked
-	const blockedIps = process.env.PRINT_BLOCKED_IPS?.split(",").map((blockedIp) => blockedIp.trim()).filter(Boolean);
+	const blockedIps = process.env.PRINT_BLOCKED_IPS?.split(",")
+		.map((blockedIp) => blockedIp.trim())
+		.filter(Boolean);
 
 	if (blockedIps?.includes(ip)) {
 		return NextResponse.json({ error: "An unknown error occurred while sending your message to the printer." }, { status: 500 });

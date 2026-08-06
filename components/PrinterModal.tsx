@@ -98,7 +98,19 @@ function PrinterModal({ onClose }: { onClose: () => void }) {
 				<form onSubmit={handleSubmit} className="mt-5">
 					<div className="mb-4">
 						<label className="block text-sm font-medium mb-2">Message</label>
-						<input type="text" value={message} onChange={(e) => { setMessage(e.target.value); setStatus(null); }} maxLength={MAX_PRINTER_CHARS} placeholder="Enter a message (something cool!)..." className="w-full px-4 py-2.5 font-normal bg-surface-hover border border-surface-border rounded-xl focus:border-purple-500/50 outline-none transition text-header placeholder-text-disabled" disabled={loading} required />
+						<input
+							type="text"
+							value={message}
+							onChange={(e) => {
+								setMessage(e.target.value);
+								setStatus(null);
+							}}
+							maxLength={MAX_PRINTER_CHARS}
+							placeholder="Enter a message (something cool!)..."
+							className="w-full px-4 py-2.5 font-normal bg-surface-hover border border-surface-border rounded-xl focus:border-purple-500/50 outline-none transition text-header placeholder-text-disabled"
+							disabled={loading}
+							required
+						/>
 
 						<div className="flex justify-end mt-1.5 mr-2">
 							<span className={`text-xs tabular-nums transition-colors duration-150 ${isAtLimit ? "text-red-400" : isNearLimit ? "text-amber-400" : ""}`}>
