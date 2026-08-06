@@ -28,6 +28,13 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json({ error: "Your request was invalid. Please try entering your message again." }, { status: 400 });
 	}
 
+	// Check if the IP address is manually blocked
+	const blockedIps = process.env.PRINT_BLOCKED_IPS?.split(",").map((blockedIp) => blockedIp.trim()).filter(Boolean);
+
+	if (blockedIps?.includes(ip)) {
+		return NextResponse.json({ error: "An unknown error occurred while sending your message to the printer." }, { status: 500 });
+	}
+
 	const message: string = body.message.trim();
 
 	// Check if the message is valid
