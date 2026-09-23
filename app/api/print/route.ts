@@ -62,9 +62,9 @@ export async function POST(req: NextRequest) {
 
 			if (res.status === "denied" || res.status === "error") {
 				throw null; // fallback to the catch
-			} else if (res?.[ip]?.detections?.proxy === true || res?.[ip]?.detections?.vpn === true || res?.[ip]?.detections?.tor === true) {
+			} else if (process.env.PRINT_BLOCK_VPNS != "false" && (res?.[ip]?.detections?.proxy === true || res?.[ip]?.detections?.vpn === true || res?.[ip]?.detections?.tor === true)) {
 				return NextResponse.json({ error: "So sorry, but VPNs and proxies aren't allowed here to prevent abuse. :((" }, { status: 400 });
-			} else if (res?.[ip]?.network?.type === "Wireless") {
+			} else if (process.env.PRINT_BLOCK_MOBILE != "false" && res?.[ip]?.network?.type === "Wireless") {
 				return NextResponse.json({ error: "So sorry, but mobile networks aren't allowed here to prevent spamming. :((" }, { status: 400 });
 			}
 		} catch {
