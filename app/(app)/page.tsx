@@ -6,13 +6,13 @@ import Music from "./Music";
 
 export const metadata = {
 	title: "Home - Brian Walczak",
-	description: "Hej! I'm Brian, a high school student and full-stack developer with a strong focus on back-end development. I'm proficient in Node.js and have a solid understanding of Python. I've been programming for over 6 years, and I love tinkering with electronics, especially Arduino.",
+	description: "Hey! I'm Brian, a high school student and full-stack developer focused on back-end work with Node.js. I love building things people can actually use and tinkering with electronics.",
 	alternates: {
 		canonical: "https://brian.re",
 	},
 	openGraph: {
 		title: "Home - Brian Walczak",
-		description: "Hej! I'm Brian, a high school student and full-stack developer with a strong focus on back-end development. I'm proficient in Node.js and have a solid understanding of Python. I've been programming for over 6 years, and I love tinkering with electronics, especially Arduino.",
+		description: "Hey! I'm Brian, a high school student and full-stack developer focused on back-end work with Node.js. I love building things people can actually use and tinkering with electronics.",
 		url: "https://brian.re",
 		siteName: "Brian Walczak",
 		locale: "en_US",
@@ -33,7 +33,7 @@ export default function Home() {
 			<section className="max-w-2xl space-y-4 mt-20">
 				<h1 className="text-4xl sm:text-5xl text-header font-semibold">Hey, I&apos;m Brian!</h1>
 
-				<p className="text-base sm:text-lg">I&apos;m a 16 year old high school student and full-stack developer with a strong focus on back-end development. I&apos;m proficient in Node.js and have a solid understanding of Python. I love tinkering with electronics, especially Arduino.</p>
+				<p className="text-base sm:text-lg">I&apos;m a 16-year-old high school student and full-stack developer who focuses on back-end work with Node.js. I love building things people can actually use, and I&apos;m always tinkering with electronics.</p>
 			</section>
 
 			<QuickInfo />
